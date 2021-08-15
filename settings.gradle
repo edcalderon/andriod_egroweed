@@ -1,0 +1,2 @@
+rootProject.name = "Egroweed"
+include ':app'
