@@ -8,14 +8,15 @@
 
     <Button
         android:id="@+id/button_login_loginView"
-        android:layout_width="298dp"
-        android:layout_height="55dp"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="128dp"
+        android:background="@drawable/rounded_corner"
         android:text="@string/button_login"
         android:textColor="#FFFFFF"
         android:textColorLink="#243773"
-        app:backgroundTint="#243773"
+        app:backgroundTint="@color/lila"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword_login"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword_login"

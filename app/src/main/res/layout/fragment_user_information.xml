@@ -47,6 +47,7 @@
             android:layout_marginEnd="290dp"
             android:layout_marginRight="290dp"
             android:text="@string/hello_user_menu_fragment"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/user_email_user_information_fragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar_information_fragment"
