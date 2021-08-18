@@ -1,5 +1,9 @@
 package com.andriod.egroweed.controller;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 import com.andriod.egroweed.model.dao.UserRoomDao;
 import com.andriod.egroweed.view.MainActivity;
 import com.andriod.egroweed.model.LocalStorage;
@@ -52,4 +56,5 @@ public class MainActivityController {
         this.userRoomDao.updateOne(user);
         mainActivity.registerSucceed(user);
     }
+
 }

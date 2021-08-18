@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/egrower_master_menu_user_information_fragment"
+        app:layout_constraintTop_toBottomOf="@+id/egrower_master_menu_user_information_fragment_dashboard"
         app:layout_constraintVertical_bias="0.14">
 
         <LinearLayout
@@ -30,7 +30,7 @@
     </ScrollView>
 
     <FrameLayout
-        android:id="@+id/egrower_master_menu_user_information_fragment"
+        android:id="@+id/egrower_master_menu_user_information_fragment_dashboard"
         android:layout_width="0dp"
         android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"

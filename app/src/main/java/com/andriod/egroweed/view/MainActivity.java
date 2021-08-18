@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(newActivity);
         }
         if(user.getRoll().compareTo("E-grower Master")==0){
-            Intent newActivity = new Intent(this, EgrowerMasterDashboard.class);
+            Intent newActivity = new Intent(this, EgrowerMasterDashboardOLD.class);
             newActivity.putExtra("userEmail", user.getEmail());
             newActivity.putExtra("userAvatar", user.getAvatar());
             startActivity(newActivity);

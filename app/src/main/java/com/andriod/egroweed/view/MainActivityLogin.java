@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +25,7 @@ public class MainActivityLogin extends AppCompatActivity {
     private EditText passwordEditText;
     private MainActivityControllerLogin mainActivityControllerLogin;
     private Button loginButton;
+    private TextView registerText;
     public static final String SESSION = "MyPrefs" ;
     public static final String Email = "emailKey";
     public static final String Name = "nameKey";
@@ -38,6 +40,7 @@ public class MainActivityLogin extends AppCompatActivity {
         emailEditText = findViewById(R.id.editTextEmail_login);
         passwordEditText = findViewById(R.id.editTextTextPassword_login);
         loginButton = findViewById(R.id.button_login_loginView);
+        registerText = findViewById(R.id.textView_register_login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,13 @@ public class MainActivityLogin extends AppCompatActivity {
                 }
             }
         });
+        registerText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         getSupportActionBar().hide();
         mainActivityControllerLogin = new MainActivityControllerLogin();
 
@@ -77,7 +87,7 @@ public class MainActivityLogin extends AppCompatActivity {
         editor.putString(Roll, user.getRoll());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
-            Intent newActivity = new Intent(this, StudentMenu.class);
+            Intent newActivity = new Intent(this, EgrowerDashboard.class);
             newActivity.putExtra("userAvatar", user.getAvatar());
             newActivity.putExtra("userRoll", user.getRoll());
             startActivity(newActivity);

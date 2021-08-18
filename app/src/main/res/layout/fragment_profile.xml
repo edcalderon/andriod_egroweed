@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="@string/profile_egrower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView_profile_fragment_avatar"
+            android:layout_width="136dp"
+            android:layout_height="116dp"
+            android:layout_marginTop="112dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_avatar_1" />
+
+        <TextView
+            android:id="@+id/textView_profile_fragment_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/app_profile_avatar"
+            app:layout_constraintBottom_toTopOf="@+id/imageView_profile_fragment_avatar"
+            app:layout_constraintEnd_toEndOf="@+id/imageView_profile_fragment_avatar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView_profile_fragment_avatar" />
+
+        <TextView
+            android:id="@+id/textView_profile_fragment_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name_input"
+            app:layout_constraintBottom_toTopOf="@+id/editText_profile_fragmente_name"
+            app:layout_constraintEnd_toEndOf="@+id/editText_profile_fragmente_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragmente_name" />
+
+        <EditText
+            android:id="@+id/editText_profile_fragmente_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_profile_fragment_avatar" />
+
+        <TextView
+            android:id="@+id/textView_profile_fragment_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_email_input"
+            app:layout_constraintBottom_toTopOf="@+id/editText_profile_fragment_email"
+            app:layout_constraintEnd_toEndOf="@+id/editText_profile_fragment_email"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragment_email" />
+
+        <EditText
+            android:id="@+id/editText_profile_fragment_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragmente_name"
+            app:layout_constraintTop_toBottomOf="@+id/editText_profile_fragmente_name" />
+
+        <TextView
+            android:id="@+id/textView_profile_fragment_roll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_profile_roll"
+            app:layout_constraintBottom_toTopOf="@+id/editText_profile_fragment_roll"
+            app:layout_constraintEnd_toEndOf="@+id/editText_profile_fragment_roll"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragment_roll" />
+
+        <EditText
+            android:id="@+id/editText_profile_fragment_roll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/editText_profile_fragment_email"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragment_email"
+            app:layout_constraintTop_toBottomOf="@+id/editText_profile_fragment_email" />
+
+        <Button
+            android:id="@+id/button_profile_fragment_update"
+            android:layout_width="200dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/app_profile_update"
+            app:layout_constraintEnd_toEndOf="@+id/editText_profile_fragment_roll"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="@+id/editText_profile_fragment_roll"
+            app:layout_constraintTop_toBottomOf="@+id/editText_profile_fragment_roll" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

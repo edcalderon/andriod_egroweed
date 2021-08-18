@@ -7,27 +7,67 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.andriod.egroweed.view.fragments.UserInformationFragment;
 import com.andriod.egroweed.R;
+import com.google.android.material.navigation.NavigationView;
+
+import es.dmoral.toasty.Toasty;
 
 public class StudentMenu extends AppCompatActivity {
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle drawerToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_menu);
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.app_nav_open, R.string.app_nav_close);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                int id = item.getItemId();
+                if(id == R.id.nav_menu_profile){
+                    Toasty.success(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT, true).show();
+                }
+                else if(id == R.id.nav_menu_dashboard){
+                    Toasty.success(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT, true).show();
+                }
+                else if(id == R.id.nav_menu_settings){
+                    Toasty.success(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT, true).show();
+                }
+                return false;
+            }
+        });
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userEmail = sessionName != null ? sessionName : sessionEmail;
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
-        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
         setTitle(R.string.dashboard_egrower);
     }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        return drawerToggle.onOptionsItemSelected(item) || super.onContextItemSelected(item);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -36,7 +76,7 @@ public class StudentMenu extends AppCompatActivity {
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userEmail = sessionName != null ? sessionName : sessionEmail;
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
-        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
     }
 
     @Override

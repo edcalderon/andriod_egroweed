@@ -4,30 +4,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.andriod.egroweed.R;
-import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterFragment;
+import com.andriod.egroweed.controller.EgrowerDashboardController;
+import com.andriod.egroweed.view.fragments.DashboardEgrowerFragment;
 import com.andriod.egroweed.view.fragments.ProfileFragment;
 import com.andriod.egroweed.view.fragments.SettingsFragment;
+
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class EgrowerMasterDashboard extends AppCompatActivity  {
+public class EgrowerDashboard extends AppCompatActivity  {
     private SmoothBottomBar bottomBar;
-    private EgrowerMasterDashboard egrowerMasterDashboardDashboardController;
+    private EgrowerDashboardController egrowerDashboardController;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_egrower_dashboard);
-        egrowerMasterDashboardDashboardController = new EgrowerMasterDashboard();
-        replace(new DashboardEgrowerMasterFragment());
+        egrowerDashboardController = new EgrowerDashboardController();
+        replace(new DashboardEgrowerFragment());
         bottomBar = findViewById(R.id.bottomBar);
         getSupportActionBar().hide();
         bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -35,7 +37,7 @@ public class EgrowerMasterDashboard extends AppCompatActivity  {
             public boolean onItemSelect(int i) {
                 switch (i){
                     case 0:
-                        replace(new DashboardEgrowerMasterFragment());
+                        replace(new DashboardEgrowerFragment());
                         break;
                     case 1:
                         replace(new ProfileFragment());

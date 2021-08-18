@@ -10,7 +10,7 @@
         android:id="@+id/button_login_loginView"
         android:layout_width="298dp"
         android:layout_height="55dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="128dp"
         android:text="@string/button_login"
         android:textColor="#FFFFFF"
@@ -105,5 +105,20 @@
         app:layout_constraintStart_toStartOf="@+id/editTextEmail_login"
         app:layout_constraintTop_toBottomOf="@+id/app_login_logo"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView_register_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:linksClickable="true"
+        android:text="@string/textView_login_register"
+        android:textColor="#243773"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/button_login_loginView"
+        app:layout_constraintStart_toStartOf="@+id/button_login_loginView"
+        app:layout_constraintTop_toBottomOf="@+id/button_login_loginView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
