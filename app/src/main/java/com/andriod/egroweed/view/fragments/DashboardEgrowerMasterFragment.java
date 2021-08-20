@@ -13,6 +13,7 @@ import com.andriod.egroweed.R;
 
 public class DashboardEgrowerMasterFragment extends Fragment {
     private String name;
+    private String roll;
     private Integer avatar;
     private TextView nameTextView;
     private View rootView;
@@ -32,7 +33,8 @@ public class DashboardEgrowerMasterFragment extends Fragment {
         super.onCreate(savedInstanceState);
         name =  getArguments().getString("name");
         avatar =  getArguments().getInt("avatar");
-        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragmentDashboard.newInstance(name, avatar)).commit();
+        roll =  getArguments().getString("roll");
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragmentDashboard.newInstance(name, avatar, roll)).commit();
         /*for(int i=0; i<10;i++){
             getChildFragmentManager().beginTransaction().add(R.id.egrower_master_menu_linear_layout, UserInformationFragmentDashboard.newInstance(name + "-" + i, avatar)).commit();
         }*/

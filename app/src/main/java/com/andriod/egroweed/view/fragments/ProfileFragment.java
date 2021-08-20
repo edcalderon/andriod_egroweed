@@ -1,9 +1,12 @@
 package com.andriod.egroweed.view.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.andriod.egroweed.R;
-import com.andriod.egroweed.controller.ProfileController;
 import com.andriod.egroweed.controller.ProfileFragmentController;
 import com.andriod.egroweed.model.pojo.User;
 import com.andriod.egroweed.view.MainActivity;
@@ -29,6 +31,7 @@ public class ProfileFragment extends Fragment {
     private EditText rollEditText;
     private EditText nameEditText;
     private ImageView avatarImageView;
+    private ImageView logOutImageView;
     private Button updateButton;
     private View rootView;
     private String name;
@@ -92,6 +95,13 @@ public class ProfileFragment extends Fragment {
                 updateUser();
             }
         });
+        logOutImageView = rootView.findViewById(R.id.imageView_logout_profile_fragment);
+        logOutImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               logout();
+            }
+        });
         profileFragmentController = new ProfileFragmentController();
         return rootView;
     }
@@ -116,6 +126,31 @@ public class ProfileFragment extends Fragment {
         editor.putString(Name, user.getName());
         editor.apply();
         Toasty.success(getActivity().getApplicationContext(), "User updated", Toast.LENGTH_SHORT, true).show();
+    }
+
+    public void logout(){
+        AlertDialog.Builder builder_logout = new AlertDialog.Builder(this.getContext())
+                .setTitle("Exit")
+                .setMessage("Do you want to exit?")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder_logout.create().show();
     }
 
     public String getName() {

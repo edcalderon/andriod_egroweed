@@ -19,11 +19,8 @@
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
             android:contentDescription="@string/avatar_accessibility_description"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_avatar_1" />
@@ -31,16 +28,16 @@
         <TextView
             android:id="@+id/user_email_user_information_fragment"
             android:layout_width="90dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/avatar_information_fragment"
             app:layout_constraintStart_toEndOf="@+id/avatar_information_fragment"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_welcome_user_fragment"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_welcome_user_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -48,10 +45,22 @@
             android:layout_marginRight="290dp"
             android:text="@string/hello_user_menu_fragment"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/user_email_user_information_fragment"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/avatar_information_fragment"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_roll_user_fragment2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_user_menu_fragment"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/user_email_user_information_fragment"
+            app:layout_constraintEnd_toEndOf="@+id/textView_welcome_user_fragment"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/user_email_user_information_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/textView_welcome_user_fragment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

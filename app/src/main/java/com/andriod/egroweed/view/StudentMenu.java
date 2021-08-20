@@ -48,9 +48,9 @@ public class StudentMenu extends AppCompatActivity {
                 else if(id == R.id.nav_menu_dashboard){
                     Toasty.success(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT, true).show();
                 }
-                else if(id == R.id.nav_menu_settings){
+                /*else if(id == R.id.nav_menu_settings){
                     Toasty.success(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT, true).show();
-                }
+                }*/
                 return false;
             }
         });
@@ -58,8 +58,9 @@ public class StudentMenu extends AppCompatActivity {
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userEmail = sessionName != null ? sessionName : sessionEmail;
+        String userRoll = getIntent().getExtras().getString("userRoll") != null ? getIntent().getExtras().getString("userRoll") : "";
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
-        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar, userRoll)).commit();
         setTitle(R.string.dashboard_egrower);
     }
 
@@ -75,8 +76,9 @@ public class StudentMenu extends AppCompatActivity {
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userEmail = sessionName != null ? sessionName : sessionEmail;
+        String userRoll = getIntent().getExtras().getString("userRoll") != null ? getIntent().getExtras().getString("userRoll") : "";
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
-        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragment.newInstance(userEmail, userAvatar, userRoll)).commit();
     }
 
     @Override

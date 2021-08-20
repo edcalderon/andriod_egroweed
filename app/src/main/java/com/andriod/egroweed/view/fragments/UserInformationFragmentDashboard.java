@@ -15,27 +15,29 @@ public class UserInformationFragmentDashboard extends Fragment {
     private String name;
     private String email;
     private Integer avatar;
+    private String roll;
     private View rootView;
     private TextView emailTextView;
     private ImageView avatarImageView;
+    private TextView rollTextView;
 
     public UserInformationFragmentDashboard() {
         // Required empty public constructor
     }
 
-    public static UserInformationFragmentDashboard newInstance(String name, Integer avatar) {
+    public static UserInformationFragmentDashboard newInstance(String name, Integer avatar, String roll) {
         UserInformationFragmentDashboard fragment = new UserInformationFragmentDashboard();
         fragment.setEmail(name);
         fragment.setName(name);
         fragment.setAvatar(avatar);
+        fragment.setRoll(roll);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // name =  getArguments().getString("name");
-        // avatar =  getArguments().getInt("avatar");
+
     }
 
     @Override
@@ -44,7 +46,9 @@ public class UserInformationFragmentDashboard extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_user_information, container, false);
         emailTextView = rootView.findViewById(R.id.user_email_user_information_fragment);
         avatarImageView = rootView.findViewById(R.id.avatar_information_fragment);
+        rollTextView = rootView.findViewById(R.id.textView_roll_user_fragment2);
         emailTextView.setText(name);
+        rollTextView.setText(this.getRoll());
 
         switch (avatar){
             case 0:
@@ -88,6 +92,14 @@ public class UserInformationFragmentDashboard extends Fragment {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRoll() {
+        return roll;
+    }
+
+    public void setRoll(String roll) {
+        this.roll = roll;
     }
 
 }

@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight">
+
         <activity android:name="com.andriod.egroweed.view.StudentMenu"></activity>
         <activity android:name="com.andriod.egroweed.view.MainActivityLogin"></activity>
         <activity android:name="com.andriod.egroweed.view.Profile"></activity>
         <activity android:name="com.andriod.egroweed.view.EgrowerDashboard"></activity>
         <activity android:name="com.andriod.egroweed.view.EgrowerMasterDashboard"></activity>
-        <activity android:name="com.andriod.egroweed.view.EgrowerMasterDashboardOLD"></activity>
         <activity android:name="com.andriod.egroweed.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
