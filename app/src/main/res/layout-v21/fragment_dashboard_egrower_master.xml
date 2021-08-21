@@ -8,24 +8,52 @@
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="189dp"
+        android:layout_height="235dp"
         android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/scrollView3"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="@+id/scrollView3"
-        app:layout_constraintTop_toTopOf="@+id/scrollView3">
+        app:layout_constraintTop_toTopOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="0.81">
 
         <com.getbase.floatingactionbutton.FloatingActionsMenu
             android:id="@+id/floatingActionsMenu"
-            android:layout_width="74dp"
-            android:layout_height="88dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_gravity="bottom|end"
             android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintVertical_bias="0.85" />
+            android:layout_marginTop="0dp"
+            app:fab_addButtonColorNormal="@color/purple_500"
+            app:fab_addButtonColorPressed="@color/teal_200"
+            app:fab_labelStyle="@style/customFab"
+            app:layout_constraintVertical_bias="0.85"
+            app:fab_addButtonPlusIconColor="@color/teal_200">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_action1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/purple_500"
+                app:fab_colorPressed="@color/purple_200"
+                app:fab_icon="@drawable/ic_baseline_add_24"
+                app:fab_size="mini"
+                app:fab_title="Fab action 1" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_action2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/purple_500"
+                app:fab_colorPressed="@color/purple_200"
+                app:fab_icon="@drawable/ic_baseline_add_24"
+                app:fab_size="mini"
+                app:fab_title="Fab action 2" />
+
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </RelativeLayout>
 
 
@@ -44,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/egrower_master_menu_user_information_fragment_dashboard"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:id="@+id/egrower_master_menu_linear_layout"

@@ -12,14 +12,17 @@ import com.andriod.egroweed.R;
 
 
 public class DashboardEgrowerFragment extends Fragment {
-
+    private String name;
+    private String roll;
+    private Integer avatar;
+    private View rootView;
 
     public DashboardEgrowerFragment() {
         // Required empty public constructor
     }
 
 
-    public static DashboardEgrowerFragment newInstance(String param1, String param2) {
+    public static DashboardEgrowerFragment newInstance() {
         DashboardEgrowerFragment fragment = new DashboardEgrowerFragment();
         return fragment;
     }
@@ -27,12 +30,15 @@ public class DashboardEgrowerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        name =  getArguments().getString("name");
+        avatar =  getArguments().getInt("avatar");
+        roll =  getArguments().getString("roll");
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dashboard_egrower, container, false);
     }
 }

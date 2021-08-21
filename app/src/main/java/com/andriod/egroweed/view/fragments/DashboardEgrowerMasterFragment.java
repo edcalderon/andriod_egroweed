@@ -15,7 +15,6 @@ public class DashboardEgrowerMasterFragment extends Fragment {
     private String name;
     private String roll;
     private Integer avatar;
-    private TextView nameTextView;
     private View rootView;
 
     public DashboardEgrowerMasterFragment() {
@@ -23,7 +22,7 @@ public class DashboardEgrowerMasterFragment extends Fragment {
     }
 
 
-    public static DashboardEgrowerMasterFragment newInstance(String param1, String param2) {
+    public static DashboardEgrowerMasterFragment newInstance() {
         DashboardEgrowerMasterFragment fragment = new DashboardEgrowerMasterFragment();
         return fragment;
     }
@@ -34,9 +33,9 @@ public class DashboardEgrowerMasterFragment extends Fragment {
         name =  getArguments().getString("name");
         avatar =  getArguments().getInt("avatar");
         roll =  getArguments().getString("roll");
-        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, UserInformationFragmentDashboard.newInstance(name, avatar, roll)).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
         /*for(int i=0; i<10;i++){
-            getChildFragmentManager().beginTransaction().add(R.id.egrower_master_menu_linear_layout, UserInformationFragmentDashboard.newInstance(name + "-" + i, avatar)).commit();
+            getChildFragmentManager().beginTransaction().add(R.id.egrower_master_menu_linear_layout, DashboardUserInformationFragment.newInstance(name + "-" + i, avatar, roll)).commit();
         }*/
     }
 

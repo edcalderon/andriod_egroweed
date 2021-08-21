@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.andriod.egroweed.R;
 
-public class UserInformationFragmentDashboard extends Fragment {
+public class DashboardUserInformationFragment extends Fragment {
     private String name;
     private String email;
     private Integer avatar;
@@ -21,12 +21,12 @@ public class UserInformationFragmentDashboard extends Fragment {
     private ImageView avatarImageView;
     private TextView rollTextView;
 
-    public UserInformationFragmentDashboard() {
+    public DashboardUserInformationFragment() {
         // Required empty public constructor
     }
 
-    public static UserInformationFragmentDashboard newInstance(String name, Integer avatar, String roll) {
-        UserInformationFragmentDashboard fragment = new UserInformationFragmentDashboard();
+    public static DashboardUserInformationFragment newInstance(String name, Integer avatar, String roll) {
+        DashboardUserInformationFragment fragment = new DashboardUserInformationFragment();
         fragment.setEmail(name);
         fragment.setName(name);
         fragment.setAvatar(avatar);

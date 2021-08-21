@@ -163,13 +163,13 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(Roll, user.getRoll());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
-            Intent newActivity = new Intent(this, EgrowerDashboard.class);
+            Intent newActivity = new Intent(this, DashboardEgrower.class);
             newActivity.putExtra("userEmail", user.getEmail());
             newActivity.putExtra("userAvatar", user.getAvatar());
             startActivity(newActivity);
         }
         if(user.getRoll().compareTo("E-grower Master")==0){
-            Intent newActivity = new Intent(this, EgrowerMasterDashboard.class);
+            Intent newActivity = new Intent(this, DashboardEgrowerMaster.class);
             newActivity.putExtra("userEmail", user.getEmail());
             newActivity.putExtra("userAvatar", user.getAvatar());
             startActivity(newActivity);

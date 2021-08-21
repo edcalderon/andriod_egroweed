@@ -13,24 +13,26 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.andriod.egroweed.R;
-import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterFragment;
+import com.andriod.egroweed.controller.DashboardEgrowerController;
+import com.andriod.egroweed.view.fragments.DashboardEgrowerFragment;
 import com.andriod.egroweed.view.fragments.ProfileFragment;
 import com.andriod.egroweed.view.fragments.SettingsFragment;
+
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class EgrowerMasterDashboard extends AppCompatActivity  {
+public class DashboardEgrower extends AppCompatActivity  {
     private SmoothBottomBar bottomBar;
-    private EgrowerMasterDashboard egrowerMasterDashboardDashboardController;
+    private DashboardEgrowerController dashboardEgrowerController;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_egrower_dashboard);
-        egrowerMasterDashboardDashboardController = new EgrowerMasterDashboard();
-        replace(new DashboardEgrowerMasterFragment());
+        dashboardEgrowerController = new DashboardEgrowerController();
+        replace(new DashboardEgrowerFragment());
         bottomBar = findViewById(R.id.bottomBar);
         getSupportActionBar().hide();
         bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -38,7 +40,7 @@ public class EgrowerMasterDashboard extends AppCompatActivity  {
             public boolean onItemSelect(int i) {
                 switch (i){
                     case 0:
-                        replace(new DashboardEgrowerMasterFragment());
+                        replace(new DashboardEgrowerFragment());
                         break;
                     case 1:
                         replace(new ProfileFragment());
