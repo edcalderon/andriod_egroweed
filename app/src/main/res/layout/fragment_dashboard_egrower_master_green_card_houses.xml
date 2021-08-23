@@ -172,6 +172,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <Button
+                android:id="@+id/button_delete_greenhouse_card"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:drawableBottom="@drawable/ic_baseline_delete_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.739"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse" />
+
+            <Button
+                android:id="@+id/button_done_greenhouse_card"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:background="@android:color/transparent"
+                android:drawableBottom="@drawable/ic_baseline_done_24"
+                app:layout_constraintBottom_toBottomOf="@+id/button_delete_greenhouse_card"
+                app:layout_constraintStart_toEndOf="@+id/button_delete_greenhouse_card"
+                app:layout_constraintTop_toTopOf="@+id/button_delete_greenhouse_card" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

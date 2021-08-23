@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTex_name_green_house_form"
         app:layout_constraintEnd_toEndOf="@+id/editTex_name_green_house_form"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Capacity (plants)"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTex_capacity_green_house_form"
         app:layout_constraintEnd_toEndOf="@+id/editTex_capacity_green_house_form"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,6 +50,7 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText_location_green_form"
         app:layout_constraintEnd_toEndOf="@+id/editText_location_green_form"
         app:layout_constraintHorizontal_bias="0.0"
@@ -133,5 +136,19 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_drawing_plant" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_cancel_greenhouse_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_clear_white_24dp"
+        app:backgroundTint="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
