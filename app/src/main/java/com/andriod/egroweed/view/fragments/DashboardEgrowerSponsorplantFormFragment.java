@@ -10,15 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 
 import java.util.Locale;
-
-import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
@@ -28,8 +26,11 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
     private String name;
     private TextView textViewSeekBar;
     private TextView greenHouseName;
+    private ImageView avatarImageView;
     private Button seekBarButtonRemove;
     private Button seekBarButtonAdd;
+    private Button closeButton;
+    private Integer avatarIndex;
 
 
 
@@ -51,12 +52,15 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        avatarIndex = 1;
         rootView = inflater.inflate(R.layout.fragment_dashboard_egrower_sponsorplant_form, container, false);
         seekBar = rootView.findViewById(R.id.seekBar_sponsorplats_form);
         seekBarButtonRemove = rootView.findViewById(R.id.button_seekbar_remove);
         seekBarButtonAdd = rootView.findViewById(R.id.button_seekbar_add);
         textViewSeekBar = rootView.findViewById(R.id.textView_seekbar_sporsorplants_form);
         greenHouseName = rootView.findViewById(R.id.textView_greenhouse_name_sponsor_form);
+        closeButton = rootView.findViewById(R.id.button_close_sponsor_form);
+        avatarImageView = rootView.findViewById(R.id.imageView_plant_sponsor_form);
         greenHouseName.setText(getName().toUpperCase(Locale.ROOT));
         textViewSeekBar.setText(seekBar.getProgress()+ "/" + seekBar.getMax());
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -69,6 +73,34 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 textViewSeekBar.setText(value + "/" + seekBar.getMax());
+                if(value < 1){
+                    avatarIndex = 0;
+                    setAvatarImageView();
+                }
+                if(value < 10){
+                    avatarIndex = 1;
+                    setAvatarImageView();
+                }
+                if(value > 50){
+                    avatarIndex = 2;
+                    setAvatarImageView();
+                }
+                if(value > 100){
+                    avatarIndex = 3;
+                    setAvatarImageView();
+                }
+                if(value > 300){
+                    avatarIndex = 4;
+                    setAvatarImageView();
+                }
+                if(value > 750){
+                    avatarIndex = 5;
+                    setAvatarImageView();
+                }
+                if(value > 1200){
+                    avatarIndex = 6;
+                    setAvatarImageView();
+                }
             }
 
             @Override
@@ -92,7 +124,38 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
                 textViewSeekBar.setText(seekBar.getProgress() + "/" + seekBar.getMax());
             }
         });
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+            }
+        });
         return rootView;
+    }
+    public void setAvatarImageView(){
+        switch (avatarIndex){
+            case 0:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_sad);
+                break;
+            case 1:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_1);
+                break;
+            case 2:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_2);
+                break;
+            case 3:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_3);
+                break;
+            case 4:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_4);
+                break;
+            case 5:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_5);
+                break;
+            case 6:
+                avatarImageView.setImageResource(R.drawable.ic_cannabis_smile_6);
+                break;
+        }
     }
 
     public String getName() {

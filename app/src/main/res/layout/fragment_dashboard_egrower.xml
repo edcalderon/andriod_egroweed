@@ -15,12 +15,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="@string/dashboard_egrower_horizontal_scroll_label"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/dashboard_egrower_main_linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/egrower_menu_user_information_fragment_dashboard"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/dashboard_egrower_main_linear_layout"
@@ -39,7 +39,7 @@
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView2"
                 android:layout_width="400dp"
-                android:layout_height="295dp"
+                android:layout_height="280dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -54,13 +54,13 @@
                 android:id="@+id/scrollView2"
                 android:layout_width="400dp"
                 android:layout_height="295dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.461"
+                app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
-                app:layout_constraintVertical_bias="0.567">
+                app:layout_constraintVertical_bias="0.0">
 
                 <LinearLayout
                     android:id="@+id/egrower_menu_linear_layout_vertical_scroll"

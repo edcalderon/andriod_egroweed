@@ -1,26 +1,18 @@
 package com.andriod.egroweed.view.fragments;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
-import com.andriod.egroweed.controller.DashboardEgrowerMasterController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
-import com.andriod.egroweed.view.MainActivity;
 
 import java.util.List;
-
-import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerFragment extends Fragment {
@@ -56,6 +48,7 @@ public class DashboardEgrowerFragment extends Fragment {
                 getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(owner,name,capacity,location)).commit();
             }
         }
+        getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
     }
 
     @Override
