@@ -45,10 +45,10 @@
                 android:text="Green House"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editText_greenhouse_card_name"
-                app:layout_constraintEnd_toEndOf="@+id/editText_greenhouse_card_name"
+                app:layout_constraintBottom_toTopOf="@+id/editText_greenhouse_card_name_egrower"
+                app:layout_constraintEnd_toEndOf="@+id/editText_greenhouse_card_name_egrower"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/editText_greenhouse_card_name"
+                app:layout_constraintStart_toStartOf="@+id/editText_greenhouse_card_name_egrower"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -62,10 +62,10 @@
                 android:text="Name"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editText_greenhouse_card_name" />
+                app:layout_constraintStart_toStartOf="@+id/editText_greenhouse_card_name_egrower" />
 
             <EditText
-                android:id="@+id/editText_greenhouse_card_name"
+                android:id="@+id/editText_greenhouse_card_name_egrower"
                 android:layout_width="207dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -80,10 +80,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/editText_owner_greenhouse"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4" />
+                app:layout_constraintStart_toEndOf="@+id/imageView_greenhouse_card_egrower" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imageView_greenhouse_card_egrower"
                 android:layout_width="109dp"
                 android:layout_height="106dp"
                 android:layout_marginStart="16dp"
@@ -95,7 +95,7 @@
                 app:srcCompat="@drawable/ic_green_house_2_" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView_label_owner_card_egrower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Owner"
@@ -107,19 +107,19 @@
                 app:layout_constraintStart_toStartOf="@+id/editText_owner_greenhouse" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textView_capacity_label_card_egrower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Capacity"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editText_capacity_greenhouse"
-                app:layout_constraintEnd_toEndOf="@+id/editText_capacity_greenhouse"
+                app:layout_constraintBottom_toTopOf="@+id/editText_capacity_greenhouse_card_egrower"
+                app:layout_constraintEnd_toEndOf="@+id/editText_capacity_greenhouse_card_egrower"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/editText_capacity_greenhouse" />
+                app:layout_constraintStart_toStartOf="@+id/editText_capacity_greenhouse_card_egrower" />
 
             <EditText
-                android:id="@+id/editText_capacity_greenhouse"
+                android:id="@+id/editText_capacity_greenhouse_card_egrower"
                 android:layout_width="115dp"
                 android:layout_height="46dp"
                 android:layout_marginTop="36dp"
@@ -129,34 +129,34 @@
                 android:inputType="textPersonName"
                 android:text="Name"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_greenhouse_card_egrower"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                app:layout_constraintStart_toStartOf="@+id/imageView_greenhouse_card_egrower"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_greenhouse_card_egrower" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textView_label_location_card_egrower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editText_location_greenhouse"
-                app:layout_constraintEnd_toEndOf="@+id/editText_location_greenhouse"
+                app:layout_constraintBottom_toTopOf="@+id/editText_location_greenhouse_card_egrower"
+                app:layout_constraintEnd_toEndOf="@+id/editText_location_greenhouse_card_egrower"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/editText_location_greenhouse" />
+                app:layout_constraintStart_toStartOf="@+id/editText_location_greenhouse_card_egrower" />
 
             <EditText
-                android:id="@+id/editText_location_greenhouse"
+                android:id="@+id/editText_location_greenhouse_card_egrower"
                 android:layout_width="208dp"
                 android:layout_height="45dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editText_capacity_greenhouse"
+                app:layout_constraintBottom_toBottomOf="@+id/editText_capacity_greenhouse_card_egrower"
                 app:layout_constraintStart_toStartOf="@+id/editText_owner_greenhouse"
-                app:layout_constraintTop_toTopOf="@+id/editText_capacity_greenhouse"
+                app:layout_constraintTop_toTopOf="@+id/editText_capacity_greenhouse_card_egrower"
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
@@ -169,7 +169,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.48"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse"
+                app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse_card_egrower"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -182,7 +182,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.739"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse" />
+                app:layout_constraintTop_toBottomOf="@+id/editText_location_greenhouse_card_egrower" />
 
             <Button
                 android:id="@+id/button_done_greenhouse_card"

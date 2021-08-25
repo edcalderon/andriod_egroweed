@@ -1,14 +1,26 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.andriod.egroweed.R;
+import com.andriod.egroweed.controller.DashboardEgrowerController;
+import com.andriod.egroweed.controller.DashboardEgrowerMasterController;
+import com.andriod.egroweed.model.pojo.Greenhouse;
+import com.andriod.egroweed.view.MainActivity;
+
+import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerFragment extends Fragment {
@@ -21,7 +33,6 @@ public class DashboardEgrowerFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     public static DashboardEgrowerFragment newInstance() {
         DashboardEgrowerFragment fragment = new DashboardEgrowerFragment();
         return fragment;
@@ -33,12 +44,25 @@ public class DashboardEgrowerFragment extends Fragment {
         name =  getArguments().getString("name");
         avatar =  getArguments().getInt("avatar");
         roll =  getArguments().getString("roll");
-        getChildFragmentManager().beginTransaction().replace(R.id.egrower_master_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
+        DashboardEgrowerController dashboardEgrowerController = new DashboardEgrowerController();
+        List<Greenhouse> greenhouses = dashboardEgrowerController.getAllGreenhouses(this);
+        if(!greenhouses.isEmpty()){
+            for (Greenhouse greenhouse: greenhouses) {
+                String owner = greenhouse.getOwner();
+                String name = greenhouse.getName();
+                String capacity = greenhouse.getCapacity();
+                String location = greenhouse.getLocation();
+                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(owner,name,capacity,location)).commit();
+            }
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dashboard_egrower, container, false);
+        rootView = inflater.inflate(R.layout.fragment_dashboard_egrower, container, false);
+        return rootView;
     }
+
 }

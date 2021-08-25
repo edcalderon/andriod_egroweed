@@ -8,8 +8,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
-        android:layout_width="189dp"
-        android:layout_height="235dp"
+        android:layout_width="255dp"
+        android:layout_height="214dp"
         android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/scrollView3"
@@ -20,37 +20,27 @@
 
         <com.getbase.floatingactionbutton.FloatingActionsMenu
             android:id="@+id/floatingActionsMenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="139dp"
+            android:layout_height="146dp"
             android:layout_alignParentTop="true"
             android:layout_gravity="bottom|end"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="44dp"
             app:fab_addButtonColorNormal="@color/purple_500"
             app:fab_addButtonColorPressed="@color/teal_200"
+            app:fab_addButtonPlusIconColor="@color/teal_200"
             app:fab_labelStyle="@style/customFab"
-            app:layout_constraintVertical_bias="0.85"
-            app:fab_addButtonPlusIconColor="@color/teal_200">
+            app:layout_constraintVertical_bias="0.85">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_action1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:fab_colorNormal="@color/purple_500"
                 app:fab_colorPressed="@color/purple_200"
                 app:fab_icon="@drawable/ic_baseline_add_24"
                 app:fab_size="mini"
-                app:fab_title="Fab action 1" />
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_action2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="@color/purple_500"
-                app:fab_colorPressed="@color/purple_200"
-                app:fab_icon="@drawable/ic_baseline_add_24"
-                app:fab_size="mini"
-                app:fab_title="Fab action 2" />
+                app:fab_title="@string/dashboard_egrower_master_fab_create_green_house" />
 
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
@@ -59,8 +49,8 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="401dp"
+        android:layout_height="576dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -69,13 +59,12 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/egrower_master_menu_user_information_fragment_dashboard"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/egrower_menu_user_information_fragment_dashboard"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:id="@+id/egrower_master_menu_linear_layout"
+            android:id="@+id/egrower_menu_linear_layout_vertical_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -86,7 +75,7 @@
     </ScrollView>
 
     <FrameLayout
-        android:id="@+id/egrower_master_menu_user_information_fragment_dashboard"
+        android:id="@+id/egrower_menu_user_information_fragment_dashboard"
         android:layout_width="0dp"
         android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"

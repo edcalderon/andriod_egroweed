@@ -22,7 +22,7 @@ import com.andriod.egroweed.view.fragments.SettingsFragment;
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class DashboardEgrower extends AppCompatActivity  {
+public class Dashboard extends AppCompatActivity  {
     private SmoothBottomBar bottomBar;
     private DashboardEgrowerController dashboardEgrowerController;
 
@@ -30,7 +30,7 @@ public class DashboardEgrower extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_egrower_dashboard);
+        setContentView(R.layout.activity_dashboard);
         dashboardEgrowerController = new DashboardEgrowerController();
         replace(new DashboardEgrowerFragment());
         bottomBar = findViewById(R.id.bottomBar);

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -163,15 +164,17 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(Roll, user.getRoll());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
-            Intent newActivity = new Intent(this, DashboardEgrower.class);
+            Intent newActivity = new Intent(this, Dashboard.class);
             newActivity.putExtra("userEmail", user.getEmail());
             newActivity.putExtra("userAvatar", user.getAvatar());
+            newActivity.putExtra("userRoll", user.getRoll());
             startActivity(newActivity);
         }
         if(user.getRoll().compareTo("E-grower Master")==0){
             Intent newActivity = new Intent(this, DashboardEgrowerMaster.class);
             newActivity.putExtra("userEmail", user.getEmail());
             newActivity.putExtra("userAvatar", user.getAvatar());
+            newActivity.putExtra("userRoll", user.getRoll());
             startActivity(newActivity);
         }
 
@@ -186,9 +189,6 @@ public class MainActivity extends AppCompatActivity {
                     passwordEditText.getText().toString(),
                     avatarIndex,
                     spinnerRoles.getSelectedItem().toString());
-        }
-        if(checkActualUser.getEmail().compareTo(emailEditText.getText().toString())==0){
-            updateAlreadyRegisteredUser();
         }
         if(checkUserEmail != null){
             userAlreadyTaken();

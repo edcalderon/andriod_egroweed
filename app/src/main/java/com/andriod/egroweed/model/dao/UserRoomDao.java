@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.User;
 
 import java.util.List;
@@ -42,5 +43,8 @@ public interface UserRoomDao {
 
     @Delete
     void deleteOne(User user);
+
+    @Insert
+    void insertOneGreenhouse(Greenhouse greenhouse);
 
 }

@@ -87,7 +87,7 @@ public class MainActivityLogin extends AppCompatActivity {
         editor.putString(Roll, user.getRoll());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
-            Intent newActivity = new Intent(this, DashboardEgrower.class);
+            Intent newActivity = new Intent(this, Dashboard.class);
             newActivity.putExtra("userAvatar", user.getAvatar());
             newActivity.putExtra("userRoll", user.getRoll());
             startActivity(newActivity);
@@ -100,9 +100,9 @@ public class MainActivityLogin extends AppCompatActivity {
         }
     }
 
-    public void loginFail(User user){
+    public void loginFail(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Please verify your email and password.")
+        builder.setMessage("Please verify your email or password.")
                 .setTitle("Something went wrong!")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override

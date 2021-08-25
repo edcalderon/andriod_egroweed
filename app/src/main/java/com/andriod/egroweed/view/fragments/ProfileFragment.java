@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andriod.egroweed.R;
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment {
     private EditText emailEditText;
     private EditText rollEditText;
     private EditText nameEditText;
+    private TextView usernameTextView;
     private ImageView avatarImageView;
     private ImageView logOutImageView;
     private Button updateButton;
@@ -65,6 +67,8 @@ public class ProfileFragment extends Fragment {
         emailEditText = rootView.findViewById(R.id.editText_profile_fragment_email);
         emailEditText.setText(email);
         emailEditText.setFocusable(false);
+        usernameTextView = rootView.findViewById(R.id.textView_username_profile);
+        usernameTextView.setText(email.substring(0,email.indexOf("@")));
         nameEditText = rootView.findViewById(R.id.editText_profile_fragmente_name);
         nameEditText.setText(name);
         rollEditText = rootView.findViewById(R.id.editText_profile_fragment_roll);

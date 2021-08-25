@@ -6,41 +6,37 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.andriod.egroweed.model.pojo.User;
+import com.andriod.egroweed.model.pojo.Greenhouse;
 
 import java.util.List;
 
 @Dao
-public interface UserRoomDao {
-    @Query("SELECT * FROM users")
-    List<User>  getAll();
+public interface GreenhouseRoomDao {
+    @Query("SELECT * FROM greenhouses")
+    List<Greenhouse>  getAll();
 
-    @Query("SELECT * FROM users LIMIT 1")
-    User getUser();
+    @Query("SELECT * FROM greenhouses WHERE owner = :emailQuery")
+    List<Greenhouse> getGreenhouseByEmail(String emailQuery);
 
-    @Query("SELECT * FROM users WHERE avatar = :avatarQuery")
-    List<User> getUserByAvatar(Integer avatarQuery);
-
-    @Query("SELECT * FROM users WHERE name = :nameQuery")
-    User getUserByName(String nameQuery);
-
-    @Query("SELECT * FROM users WHERE email = :emailQuery")
-    User getUserByEmail(String emailQuery);
+    @Query("SELECT * FROM greenhouses WHERE name = :nameQuery")
+    Greenhouse getGreenhouseByName(String nameQuery);
 
     @Insert
-    void insertAl(User ... users );
+    void insertAll(Greenhouse ... greenhouses );
+
     @Insert
-    void insertOne(User user);
+    void insertOne(Greenhouse greenhouse);
 
     @Update
-    void updateList(List<User> users);
+    void updateList(List<Greenhouse> Greenhouses);
+
     @Update
-    void updateOne(User user);
+    void updateOne(Greenhouse greenhouse);
 
     @Delete
-    void deleteAll(User ... user);
+    void deleteAll(Greenhouse ... greenhouse);
 
     @Delete
-    void deleteOne(User user);
+    void deleteOne(Greenhouse greenhouse);
 
 }

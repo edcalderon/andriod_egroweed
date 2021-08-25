@@ -1,6 +1,7 @@
 package com.andriod.egroweed.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_egrower_dashboard);
+        setContentView(R.layout.activity_dashboard);
         dashboardEgrowerMasterController = new DashboardEgrowerMaster();
         replace(new DashboardEgrowerMasterFragment());
         bottomBar = findViewById(R.id.bottomBar);
@@ -59,11 +60,15 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
         String userRoll = getIntent().getExtras().getString("userRoll") != null ? getIntent().getExtras().getString("userRoll") : "";
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
 
+
         Bundle bundle = new Bundle();
         bundle.putString("name", sessionName);
         bundle.putString("email", sessionEmail);
+        bundle.putString("owner", sessionEmail);
         bundle.putString("roll", userRoll);
         bundle.putInt("avatar", userAvatar);
+
+
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

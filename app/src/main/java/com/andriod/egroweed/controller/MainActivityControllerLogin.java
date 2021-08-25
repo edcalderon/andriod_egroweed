@@ -13,10 +13,10 @@ public class MainActivityControllerLogin {
     public void login(MainActivityLogin mainActivityLogin, String email, String password){
         this.userRoomDao = LocalStorage.getLocalStorage(mainActivityLogin.getApplicationContext()).userRoomDao();
         User user = this.userRoomDao.getUserByEmail(email);
-        if(user.getPassword().compareTo(password)==0){
+        if(user != null && user.getPassword().compareTo(password)==0){
             mainActivityLogin.loginSucceed(user);
-        } else {
-            mainActivityLogin.loginFail(user);
+        } else if (user == null){
+            mainActivityLogin.loginFail();
         }
     }
 }
