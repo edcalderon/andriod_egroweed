@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.view.Dashboard;
 
+import java.util.Locale;
+
 
 public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
     private String owner;
@@ -55,12 +57,12 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         textOwner.setText(owner);
         textCapacity.setText(capacity);
         textLocation.setText(location);
-        textName.setText(name);
+        textName.setText(name.toUpperCase(Locale.ROOT));
         participateButton = rootView.findViewById(R.id.button_participate_greenhouse_card_egrower);
         participateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance()).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name)).commit();
             }
         });
         return rootView;
