@@ -52,7 +52,8 @@ public class DashboardEgrowerMasterFragment extends Fragment {
                 String name = greenhouse.getName();
                 String capacity = greenhouse.getCapacity();
                 String location = greenhouse.getLocation();
-                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerMasterGreenHousesCardFragment.newInstance(owner,name,capacity,location)).commit();
+                Integer avatarIndex = greenhouse.getAvatar();
+                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerMasterGreenHousesCardFragment.newInstance(owner,name,capacity,location, avatarIndex)).commit();
             }
         }
     }

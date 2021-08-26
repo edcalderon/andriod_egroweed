@@ -10,6 +10,7 @@ import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterGreenHouseFormF
 import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterGreenHousesCardFragment;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class DashboardEgrowerMasterController {
@@ -36,6 +37,11 @@ public class DashboardEgrowerMasterController {
         greenhouse.setCapacity(capacity);
         greenhouse.setLocation(location);
         greenhouse.setOwner(owner);
+        Random r = new Random();
+        int low = 1;
+        int high = 5;
+        int result = r.nextInt(high-low) + low;
+        greenhouse.setAvatar(result);
         this.greenhouseRoomDao.insertOne(greenhouse);
         fragment.createSucceed(greenhouse);
     }

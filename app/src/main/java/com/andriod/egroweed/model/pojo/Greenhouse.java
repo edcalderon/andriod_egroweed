@@ -16,6 +16,7 @@ public class Greenhouse {
     private String capacity;
     private String location;
     private String owner;
+    private Integer avatar;
 
     @NonNull
     public Integer getId() {
@@ -56,6 +57,14 @@ public class Greenhouse {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public Integer getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Integer avatar) {
+        this.avatar = avatar;
     }
 
 

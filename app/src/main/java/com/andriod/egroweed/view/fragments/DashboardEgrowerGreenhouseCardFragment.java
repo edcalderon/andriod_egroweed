@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andriod.egroweed.R;
@@ -21,10 +22,12 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
     private String name;
     private String capacity;
     private String location;
+    private Integer avatarIndex;
     private TextView textOwner;
     private TextView textName;
     private TextView textCapacity;
     private TextView textLocation;
+    private ImageView avatarImageView;
     private View rootView;
     private Button participateButton;
 
@@ -32,12 +35,13 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerGreenhouseCardFragment newInstance(String owner, String name, String capacity, String location) {
+    public static DashboardEgrowerGreenhouseCardFragment newInstance(String owner, String name, String capacity, String location, Integer avatarIndex) {
         DashboardEgrowerGreenhouseCardFragment fragment = new DashboardEgrowerGreenhouseCardFragment();
         fragment.setOwner(owner);
         fragment.setName(name);
         fragment.setCapacity(capacity);
         fragment.setLocation(location);
+        fragment.setAvatar(avatarIndex);
         return fragment;
     }
 
@@ -54,6 +58,7 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         textName = rootView.findViewById(R.id.textView_name_card_greenhouse_egrower);
         textCapacity = rootView.findViewById(R.id.textView_capacity_card_greenhouse_egrower);
         textLocation = rootView.findViewById(R.id.textView_location_card_greenhouse_egrower);
+        avatarImageView = rootView.findViewById(R.id.imageView_avatar_greenhouse_card_egrower);
         textOwner.setText(owner);
         textCapacity.setText(capacity);
         textLocation.setText(location);
@@ -65,7 +70,28 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name)).commit();
             }
         });
+        setAvatarImageView();
         return rootView;
+    }
+
+    public void setAvatarImageView(){
+        switch (avatarIndex){
+            case 0:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_1);
+                break;
+            case 1:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_2);
+                break;
+            case 2:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_3);
+                break;
+            case 3:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_4);
+                break;
+            case 4:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_5);
+                break;
+        }
     }
 
     public String getOwner() {
@@ -98,5 +124,13 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Integer getAvatar() {
+        return avatarIndex;
+    }
+
+    public void setAvatar(Integer avatar) {
+        this.avatarIndex = avatar;
     }
 }

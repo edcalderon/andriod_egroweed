@@ -11,7 +11,7 @@ import com.andriod.egroweed.model.dao.UserRoomDao;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.User;
 
-@Database(entities = {User.class, Greenhouse.class}, version = 7)
+@Database(entities = {User.class, Greenhouse.class}, version = 9)
 public abstract class LocalStorage extends RoomDatabase {
     private static LocalStorage LocalStorage;
 

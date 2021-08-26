@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.andriod.egroweed.R;
@@ -29,10 +30,12 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
     private String name;
     private String capacity;
     private String location;
+    private Integer avatarIndex;
     private EditText editTextOwner;
     private EditText editTextName;
     private EditText editTextCapacity;
     private EditText editTextLocation;
+    private ImageView avatarImageView;
     private Button editButton;
     private Button deleteButton;
     private Button doneButton;
@@ -42,12 +45,13 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, String capacity, String location) {
+    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, String capacity, String location, Integer avatarIndex) {
         DashboardEgrowerMasterGreenHousesCardFragment fragment = new DashboardEgrowerMasterGreenHousesCardFragment();
         fragment.setOwner(owner);
         fragment.setName(name);
         fragment.setCapacity(capacity);
         fragment.setLocation(location);
+        fragment.setAvatar(avatarIndex);
         return fragment;
     }
 
@@ -61,11 +65,11 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dashboard_egrower_master_green_card_houses, container, false);
-
         editTextOwner = rootView.findViewById(R.id.editText_owner_greenhouse);
         editTextName = rootView.findViewById(R.id.editText_greenhouse_card_name_egrower);
         editTextCapacity = rootView.findViewById(R.id.editText_capacity_greenhouse_card_egrower);
         editTextLocation = rootView.findViewById(R.id.editText_location_greenhouse_card_egrower);
+        avatarImageView = rootView.findViewById(R.id.imageView_avatar_greenhouse_card_egrower);
         editButton = rootView.findViewById(R.id.button_edit_greenhouse);
         deleteButton = rootView.findViewById(R.id.button_delete_greenhouse_card);
         doneButton = rootView.findViewById(R.id.button_done_greenhouse_card);
@@ -79,6 +83,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         editTextName.setFocusable(false);
         editTextCapacity.setFocusable(false);
         editTextLocation.setFocusable(false);
+        setAvatarImageView();
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,6 +177,26 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         editButton.setVisibility(View.VISIBLE);
     }
 
+    public void setAvatarImageView(){
+        switch (avatarIndex){
+            case 0:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_1);
+                break;
+            case 1:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_2);
+                break;
+            case 2:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_3);
+                break;
+            case 3:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_4);
+                break;
+            case 4:
+                avatarImageView.setImageResource(R.drawable.ic_green_house_5);
+                break;
+        }
+    }
+
     public String getOwner() {
         return owner;
     }
@@ -202,6 +227,14 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Integer getAvatar() {
+        return avatarIndex;
+    }
+
+    public void setAvatar(Integer avatar) {
+        this.avatarIndex = avatar;
     }
 
 
