@@ -29,6 +29,7 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
     private ImageView avatarImageView;
     private Button seekBarButtonRemove;
     private Button seekBarButtonAdd;
+    private Button sponsorButton;
     private Button closeButton;
     private Integer avatarIndex;
 
@@ -59,6 +60,7 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
         seekBarButtonAdd = rootView.findViewById(R.id.button_seekbar_add);
         textViewSeekBar = rootView.findViewById(R.id.textView_seekbar_sporsorplants_form);
         greenHouseName = rootView.findViewById(R.id.textView_greenhouse_name_sponsor_form);
+        sponsorButton = rootView.findViewById(R.id.button_make_sponsor_form);
         closeButton = rootView.findViewById(R.id.button_close_sponsor_form);
         avatarImageView = rootView.findViewById(R.id.imageView_plant_sponsor_form);
         greenHouseName.setText(getName().toUpperCase(Locale.ROOT));
@@ -122,6 +124,12 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
             public void onClick(View v) {
                 seekBar.setProgress(seekBar.getProgress() + 1, true);
                 textViewSeekBar.setText(seekBar.getProgress() + "/" + seekBar.getMax());
+            }
+        });
+        sponsorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance()).commit();
             }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {

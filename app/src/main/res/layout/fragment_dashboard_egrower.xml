@@ -8,21 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="@string/dashboard_egrower_horizontal_scroll_label"
-        app:layout_constraintBottom_toTopOf="@+id/dashboard_egrower_main_linear_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/egrower_menu_user_information_fragment_dashboard"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/dashboard_egrower_main_linear_layout"
         android:layout_width="407dp"
         android:layout_height="605dp"
@@ -36,11 +22,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_egrower_horizontal_scroll_label"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/horizontalScrollView2" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView2"
                 android:layout_width="400dp"
                 android:layout_height="280dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -71,7 +76,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/egrower_menu_user_information_fragment_dashboard"
