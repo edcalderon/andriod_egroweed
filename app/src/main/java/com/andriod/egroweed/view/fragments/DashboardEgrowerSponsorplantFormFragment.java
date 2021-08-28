@@ -1,5 +1,7 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -15,7 +17,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.andriod.egroweed.R;
+import com.andriod.egroweed.controller.DashboardEgrowerController;
+import com.andriod.egroweed.model.pojo.Plant;
+import com.andriod.egroweed.view.MainActivity;
 
+import java.util.List;
 import java.util.Locale;
 
 
@@ -33,6 +39,7 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
     private Button sponsorButton;
     private Button closeButton;
     private Integer avatarIndex;
+    private DashboardEgrowerController dashboardEgrowerController;
 
 
 
@@ -132,16 +139,32 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Integer plantsToSponsor = seekBar.getProgress();
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseID())).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseID()),"CONFIRM_FORM").commit();
             }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+                checkIfUserHavePlants();
             }
         });
+        dashboardEgrowerController = new DashboardEgrowerController();
         return rootView;
+    }
+    public void checkIfUserHavePlants(){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        String ownerEmail = sharedpreferences.getString("emailKey", "");
+        List<Plant> plantsOwned = dashboardEgrowerController.getAllPlantsByOwnerInSponsorFragment(this, ownerEmail);
+        if (!plantsOwned.isEmpty()){
+            Fragment fragment = getParentFragmentManager().findFragmentByTag("SPONSOR_FORM");
+            getParentFragmentManager().beginTransaction().remove(fragment).commit();
+            for (Plant plant: plantsOwned) {
+                Integer quantity = plant.getQuantity();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsFragment.newInstance(quantity)).commit();
+            }
+        } else if(plantsOwned.isEmpty()){
+            getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+        }
     }
     public void setAvatarImageView(){
         switch (avatarIndex){

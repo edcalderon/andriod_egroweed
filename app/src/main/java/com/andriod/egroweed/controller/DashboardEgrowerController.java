@@ -10,6 +10,7 @@ import com.andriod.egroweed.model.pojo.User;
 import com.andriod.egroweed.model.pojo.Wallet;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerConfirmSponsorFragment;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerFragment;
+import com.andriod.egroweed.view.fragments.DashboardEgrowerSponsorplantFormFragment;
 
 
 import java.util.List;
@@ -52,6 +53,17 @@ public class DashboardEgrowerController {
     }
 
     public List<Plant> getAllPlantsByOwner(DashboardEgrowerFragment fragment, String ownerEmail) {
+        this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
+        List<Plant> plants = plantRoomDao.getPlantsByOwner(ownerEmail);
+        return plants;
+    }
+
+    public List<Plant> getAllPlantsByOwnerInSponsorFragment(DashboardEgrowerSponsorplantFormFragment fragment, String ownerEmail) {
+        this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
+        List<Plant> plants = plantRoomDao.getPlantsByOwner(ownerEmail);
+        return plants;
+    }
+    public List<Plant> getAllPlantsByOwnerInConfirmFragment(DashboardEgrowerConfirmSponsorFragment fragment, String ownerEmail) {
         this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
         List<Plant> plants = plantRoomDao.getPlantsByOwner(ownerEmail);
         return plants;

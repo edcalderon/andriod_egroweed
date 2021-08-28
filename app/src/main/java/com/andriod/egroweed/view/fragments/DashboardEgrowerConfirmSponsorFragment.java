@@ -23,6 +23,8 @@ import com.andriod.egroweed.view.Dashboard;
 import com.andriod.egroweed.view.DashboardEgrowerMaster;
 import com.andriod.egroweed.view.MainActivity;
 
+import java.util.List;
+
 import es.dmoral.toasty.Toasty;
 
 
@@ -73,7 +75,7 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+                checkIfUserHavePlants();
             }
         });
         dashboardEgrowerController = new DashboardEgrowerController();
@@ -107,7 +109,23 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putFloat(Balance,newBalance);
         showDialog("Success!", "you have been sponsored " + plants + " plants");
-        getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsFragment.newInstance(plants)).commit();
+        getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsFragment.newInstance(plants)).commit();
+    }
+
+    public void checkIfUserHavePlants(){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        String ownerEmail = sharedpreferences.getString("emailKey", "");
+        List<Plant> plantsOwned = dashboardEgrowerController.getAllPlantsByOwnerInConfirmFragment(this, ownerEmail);
+        if (!plantsOwned.isEmpty()){
+            Fragment fragment = getParentFragmentManager().findFragmentByTag("CONFIRM_FORM");
+            getParentFragmentManager().beginTransaction().remove(fragment).commit();
+            for (Plant plant: plantsOwned) {
+                Integer quantity = plant.getQuantity();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsFragment.newInstance(quantity)).commit();
+            }
+        } else if(plantsOwned.isEmpty()){
+            getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+        }
     }
 
     public void showDialog(String title, String msg){

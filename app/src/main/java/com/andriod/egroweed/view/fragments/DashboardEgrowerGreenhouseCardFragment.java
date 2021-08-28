@@ -69,7 +69,7 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         participateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name, getID())).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name, getID()),"SPONSOR_FORM").commit();
             }
         });
         setAvatarImageView();

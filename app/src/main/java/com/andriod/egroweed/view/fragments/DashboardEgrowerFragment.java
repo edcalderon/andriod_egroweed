@@ -71,7 +71,7 @@ public class DashboardEgrowerFragment extends Fragment {
             }
         }
         if (plants.isEmpty()){
-            getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+            getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance(), "EMPTY").commit();
         }
     }
 
