@@ -70,13 +70,13 @@ public class DashboardEgrowerMasterGreenHouseFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String name = nameEditText.getText().toString();
-                String capacity = capacityEditText.getText().toString();
+                Integer capacity = Integer.parseInt(capacityEditText.getText().toString());
                 String location = locationEditText.getText().toString();
                 String owner = getOwner();
-                if(!name.isEmpty() && !capacity.isEmpty() && !location.isEmpty() && !owner.isEmpty()){
+                if(!name.isEmpty() && capacity > 0 && !location.isEmpty() && !owner.isEmpty()){
                     createGreenhouse(name, capacity, location, owner);
                 } else {
-                    Toasty.error(getActivity().getApplicationContext(),  "All fields are required", Toast.LENGTH_SHORT, true).show();
+                    Toasty.error(getActivity().getApplicationContext(),  "Check fields and try again!", Toast.LENGTH_SHORT, true).show();
                 }
             }
         });
@@ -88,7 +88,7 @@ public class DashboardEgrowerMasterGreenHouseFormFragment extends Fragment {
         });
         return rootView;
     }
-    public void createGreenhouse(String name, String capacity, String location, String owner){
+    public void createGreenhouse(String name, Integer capacity, String location, String owner){
         dashboardEgrowerMasterController.createGreenHouse(this, name, capacity, location, owner);
     }
     public void createSucceed(Greenhouse greenhouse){

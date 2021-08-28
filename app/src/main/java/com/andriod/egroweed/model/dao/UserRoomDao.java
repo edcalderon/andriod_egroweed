@@ -4,10 +4,12 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.User;
+import com.andriod.egroweed.model.pojo.UserWithPlants;
 
 import java.util.List;
 
@@ -46,5 +48,13 @@ public interface UserRoomDao {
 
     @Insert
     void insertOneGreenhouse(Greenhouse greenhouse);
+
+    @Transaction
+    @Query("SELECT * FROM Users")
+    public List<UserWithPlants> getUsersWithPlants();
+
+    @Transaction
+    @Query("SELECT * FROM users WHERE name = :nameQuery")
+    List<UserWithPlants> getUserWithPlantsByName(String nameQuery);
 
 }

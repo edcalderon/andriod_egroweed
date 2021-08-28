@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SESSION = "MyPrefs" ;
     public static final String Email = "emailKey";
     public static final String Roll = "rollKey";
+    public static final String Balance = "balanceKey";
 
 
     @Override
@@ -93,33 +94,6 @@ public class MainActivity extends AppCompatActivity {
         avatarIndex = 0;
         getSupportActionBar().hide();
         mainActivityController = new MainActivityController();
-        User actualUser = mainActivityController.checkActualUser(this);
-        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
-        String sessionEmail = sharedpreferences.getString("emailKey", "");
-        /*String email = actualUser.getEmail();
-        if(actualUser != null && email.compareTo(sessionEmail)==0){
-            registerSucceed(actualUser);
-        }*/
-    }
-
-    public void updateAlreadyRegisteredUser(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You can only update your avatar.")
-                .setTitle("That is your actual name")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        updateRegisteredUser();
-                    }
-                })
-                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
     public void userAlreadyTaken(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -162,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString(Email, user.getEmail());
         editor.putString(Roll, user.getRoll());
+        editor.putFloat(Balance,user.getWallet().getBalance());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
             Intent newActivity = new Intent(this, Dashboard.class);

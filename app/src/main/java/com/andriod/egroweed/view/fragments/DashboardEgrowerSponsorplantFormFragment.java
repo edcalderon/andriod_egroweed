@@ -24,6 +24,7 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
     private View rootView;
     private SeekBar seekBar;
     private String name;
+    private Integer greenhouseID;
     private TextView textViewSeekBar;
     private TextView greenHouseName;
     private ImageView avatarImageView;
@@ -39,9 +40,10 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerSponsorplantFormFragment newInstance(String name) {
+    public static DashboardEgrowerSponsorplantFormFragment newInstance(String name, Integer greenhouseID) {
         DashboardEgrowerSponsorplantFormFragment fragment = new DashboardEgrowerSponsorplantFormFragment();
         fragment.setName(name);
+        fragment.setGreenhouseID(greenhouseID);
         return fragment;
     }
 
@@ -129,7 +131,8 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
         sponsorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance()).commit();
+                Integer plantsToSponsor = seekBar.getProgress();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseID())).commit();
             }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -172,5 +175,13 @@ public class DashboardEgrowerSponsorplantFormFragment extends Fragment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getGreenhouseID() {
+        return greenhouseID;
+    }
+
+    public void setGreenhouseID(Integer greenhouseID) {
+        this.greenhouseID = greenhouseID;
     }
 }

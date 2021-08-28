@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.andriod.egroweed.model.pojo.Greenhouse;
+import com.andriod.egroweed.model.pojo.Plant;
 
 import java.util.List;
 
@@ -20,6 +21,9 @@ public interface GreenhouseRoomDao {
 
     @Query("SELECT * FROM greenhouses WHERE name = :nameQuery")
     Greenhouse getGreenhouseByName(String nameQuery);
+
+    @Query("SELECT * FROM greenhouses WHERE id = :idQuery")
+    Greenhouse getGreenhouseById(Integer idQuery);
 
     @Insert
     void insertAll(Greenhouse ... greenhouses );

@@ -30,7 +30,7 @@ public class DashboardEgrowerMasterController {
         fragment.deleteGreenhouseSucceed(greenhouse);
     }
 
-    public void createGreenHouse(DashboardEgrowerMasterGreenHouseFormFragment fragment, String name, String capacity, String location, String owner){
+    public void createGreenHouse(DashboardEgrowerMasterGreenHouseFormFragment fragment, String name, Integer capacity, String location, String owner){
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
         Greenhouse greenhouse = new Greenhouse();
         greenhouse.setName(name);
@@ -46,7 +46,7 @@ public class DashboardEgrowerMasterController {
         fragment.createSucceed(greenhouse);
     }
 
-    public void updateGreenhouse(DashboardEgrowerMasterGreenHousesCardFragment fragment, String nameOld, String nameNew, String capacity, String location) {
+    public void updateGreenhouse(DashboardEgrowerMasterGreenHousesCardFragment fragment, String nameOld, String nameNew, Integer capacity, String location) {
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
         Greenhouse greenhouse = this.greenhouseRoomDao.getGreenhouseByName(nameOld);
         greenhouse.setName(nameNew);

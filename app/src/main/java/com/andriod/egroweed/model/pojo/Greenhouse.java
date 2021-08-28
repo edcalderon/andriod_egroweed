@@ -4,19 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
 @Entity(tableName = "greenhouses")
 public class Greenhouse {
-
-
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private Integer id;
+    @NonNull
     private String name;
-    private String capacity;
+    private Integer capacity;
     private String location;
     private String owner;
     private Integer avatar;
+
 
     @NonNull
     public Integer getId() {
@@ -35,11 +36,11 @@ public class Greenhouse {
         this.name = name;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
-    public String getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 

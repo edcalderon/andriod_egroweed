@@ -36,13 +36,15 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Capacity (plants)"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTex_capacity_green_house_form"
-        app:layout_constraintEnd_toEndOf="@+id/editTex_capacity_green_house_form"
+        app:layout_constraintEnd_toEndOf="@+id/editTex_name_green_house_form"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTex_capacity_green_house_form" />
+        app:layout_constraintStart_toStartOf="@+id/editTex_name_green_house_form"
+        app:layout_constraintTop_toBottomOf="@+id/editTex_name_green_house_form" />
 
     <TextView
         android:id="@+id/textView11"
@@ -60,16 +62,16 @@
         android:id="@+id/editText_location_green_form"
         android:layout_width="230dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="36dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/button_create_greenhouse_form"
         app:layout_constraintEnd_toEndOf="@+id/editTex_capacity_green_house_form"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTex_capacity_green_house_form"
-        app:layout_constraintTop_toBottomOf="@+id/editTex_capacity_green_house_form" />
+        app:layout_constraintTop_toBottomOf="@+id/editTex_capacity_green_house_form"
+        app:layout_constraintVertical_bias="0.818" />
 
     <EditText
         android:id="@+id/editTex_name_green_house_form"
@@ -87,19 +89,6 @@
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <EditText
-        android:id="@+id/editTex_capacity_green_house_form"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTex_name_green_house_form"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTex_name_green_house_form"
-        app:layout_constraintTop_toBottomOf="@+id/editTex_name_green_house_form" />
 
     <Button
         android:id="@+id/button_create_greenhouse_form"
@@ -139,5 +128,17 @@
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTex_capacity_green_house_form"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/editTex_name_green_house_form" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

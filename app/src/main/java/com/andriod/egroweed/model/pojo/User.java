@@ -1,8 +1,11 @@
 package com.andriod.egroweed.model.pojo;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 
 @Entity(tableName = "users")
 public class User {
@@ -14,6 +17,7 @@ public class User {
     private String password;
     private Integer avatar;
     private String roll;
+    @Embedded public Wallet wallet;
 
     @NonNull
     public String getEmail() {
@@ -55,6 +59,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
 }
 
 

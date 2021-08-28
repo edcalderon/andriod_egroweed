@@ -1,5 +1,7 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,18 +9,24 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
+import com.andriod.egroweed.model.pojo.Plant;
+import com.andriod.egroweed.view.MainActivity;
 
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerFragment extends Fragment {
     private String name;
     private String roll;
     private Integer avatar;
+    private Float balance;
     private View rootView;
 
     public DashboardEgrowerFragment() {
@@ -33,23 +41,38 @@ public class DashboardEgrowerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        String owner = sharedpreferences.getString("emailKey", "" );
         name =  getArguments().getString("name");
         avatar =  getArguments().getInt("avatar");
         roll =  getArguments().getString("roll");
-        getChildFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
+        balance =  getArguments().getFloat("balance");
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll, balance)).commit();
         DashboardEgrowerController dashboardEgrowerController = new DashboardEgrowerController();
         List<Greenhouse> greenhouses = dashboardEgrowerController.getAllGreenhouses(this);
+        List<Plant> plants = dashboardEgrowerController.getAllPlantsByOwner(this, owner);
         if(!greenhouses.isEmpty()){
             for (Greenhouse greenhouse: greenhouses) {
-                String owner = greenhouse.getOwner();
+                String greenhouseOwner = greenhouse.getOwner();
                 String name = greenhouse.getName();
-                String capacity = greenhouse.getCapacity();
+                Integer capacity = greenhouse.getCapacity();
                 String location = greenhouse.getLocation();
                 Integer avatarIndex = greenhouse.getAvatar();
-                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(owner,name,capacity,location,avatarIndex)).commit();
+                Integer id = greenhouse.getId();
+                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(greenhouseOwner,name,id,capacity,location,avatarIndex)).commit();
+            }
+        } else {
+            getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhousesEmptyFragment.newInstance()).commit();
+        }
+        if (!plants.isEmpty()){
+            for (Plant plant: plants) {
+                Integer quantity = plant.getQuantity();
+                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsFragment.newInstance(quantity)).commit();
             }
         }
-        getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+        if (plants.isEmpty()){
+            getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
+        }
     }
 
     @Override

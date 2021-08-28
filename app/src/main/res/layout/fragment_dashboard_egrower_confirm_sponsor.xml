@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_confirm_confirm_form"
         android:layout_width="116dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textView_plants_to_sponsor_confirm_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView_cost_bca_confirm_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10000"

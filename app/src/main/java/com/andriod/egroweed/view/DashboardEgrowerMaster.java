@@ -1,7 +1,6 @@
 package com.andriod.egroweed.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterFragment;
 import com.andriod.egroweed.view.fragments.ProfileFragment;
-import com.andriod.egroweed.view.fragments.SettingsFragment;
+import com.andriod.egroweed.view.fragments.WalletFragment;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
@@ -41,7 +40,7 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
                         replace(new ProfileFragment());
                         break;
                     case 2:
-                        replace(new SettingsFragment());
+                        replace(new WalletFragment());
                         break;
                 }
                 return true;
@@ -57,6 +56,7 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
+        float sessionBalance = sharedpreferences.getFloat("balanceKey", (float)0.0);
         String userRoll = getIntent().getExtras().getString("userRoll") != null ? getIntent().getExtras().getString("userRoll") : "";
         Integer userAvatar = getIntent().getExtras().getInt("userAvatar") != -1 ? getIntent().getExtras().getInt("userAvatar") : 0;
 
@@ -66,6 +66,7 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
         bundle.putString("email", sessionEmail);
         bundle.putString("owner", sessionEmail);
         bundle.putString("roll", userRoll);
+        bundle.putFloat("balance", sessionBalance);
         bundle.putInt("avatar", userAvatar);
 
 

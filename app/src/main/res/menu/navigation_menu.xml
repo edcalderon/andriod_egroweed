@@ -7,15 +7,15 @@
         >
     </item>
     <item
+        android:id="@+id/nav_menu_wallet"
+        android:title="Wallet"
+        android:icon="@drawable/ic_baseline_account_balance_wallet_24"
+        >
+    </item>
+    <item
         android:id="@+id/nav_menu_profile"
         android:title="Profile"
         android:icon="@drawable/ic_baseline_person_24"
         >
     </item>
-    <!--<item
-        android:id="@+id/nav_menu_settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_baseline_settings_24"
-        >
-    </item>-->
 </menu>

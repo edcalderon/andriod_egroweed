@@ -20,6 +20,7 @@ public class DashboardEgrowerMasterFragment extends Fragment {
     private String name;
     private String email;
     private String roll;
+    private float balance;
     private Integer avatar;
     private View rootView;
     private FloatingActionButton FabAddGreenHouse;
@@ -42,7 +43,8 @@ public class DashboardEgrowerMasterFragment extends Fragment {
         email =  getArguments().getString("email");
         avatar =  getArguments().getInt("avatar");
         roll =  getArguments().getString("roll");
-        getChildFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll)).commit();
+        balance =  getArguments().getFloat("balance");
+        getChildFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll, balance)).commit();
 
         DashboardEgrowerMasterController dashboardEgrowerMasterFragmentController = new DashboardEgrowerMasterController();
         List<Greenhouse> userGreenhouses = dashboardEgrowerMasterFragmentController.findGreenhousesByEmail(this, email);
@@ -50,7 +52,7 @@ public class DashboardEgrowerMasterFragment extends Fragment {
             for (Greenhouse greenhouse: userGreenhouses){
                 String owner = greenhouse.getOwner();
                 String name = greenhouse.getName();
-                String capacity = greenhouse.getCapacity();
+                Integer capacity = greenhouse.getCapacity();
                 String location = greenhouse.getLocation();
                 Integer avatarIndex = greenhouse.getAvatar();
                 getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerMasterGreenHousesCardFragment.newInstance(owner,name,capacity,location, avatarIndex)).commit();

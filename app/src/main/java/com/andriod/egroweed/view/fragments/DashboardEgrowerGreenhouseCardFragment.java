@@ -20,7 +20,8 @@ import java.util.Locale;
 public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
     private String owner;
     private String name;
-    private String capacity;
+    private Integer id;
+    private Integer capacity;
     private String location;
     private Integer avatarIndex;
     private TextView textOwner;
@@ -35,10 +36,11 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerGreenhouseCardFragment newInstance(String owner, String name, String capacity, String location, Integer avatarIndex) {
+    public static DashboardEgrowerGreenhouseCardFragment newInstance(String owner, String name, Integer id, Integer capacity, String location, Integer avatarIndex) {
         DashboardEgrowerGreenhouseCardFragment fragment = new DashboardEgrowerGreenhouseCardFragment();
         fragment.setOwner(owner);
         fragment.setName(name);
+        fragment.setId(id);
         fragment.setCapacity(capacity);
         fragment.setLocation(location);
         fragment.setAvatar(avatarIndex);
@@ -60,14 +62,14 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         textLocation = rootView.findViewById(R.id.textView_location_card_greenhouse_egrower);
         avatarImageView = rootView.findViewById(R.id.imageView_avatar_greenhouse_card_egrower);
         textOwner.setText(owner);
-        textCapacity.setText(capacity);
+        textCapacity.setText(capacity.toString());
         textLocation.setText(location);
         textName.setText(name.toUpperCase(Locale.ROOT));
         participateButton = rootView.findViewById(R.id.button_participate_greenhouse_card_egrower);
         participateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name)).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name, getID())).commit();
             }
         });
         setAvatarImageView();
@@ -110,11 +112,19 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         this.name = name;
     }
 
-    public String getCapacity() {
+    public Integer getID() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 

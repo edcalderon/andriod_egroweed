@@ -28,7 +28,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
     private View rootView;
     private String owner;
     private String name;
-    private String capacity;
+    private Integer capacity;
     private String location;
     private Integer avatarIndex;
     private EditText editTextOwner;
@@ -45,7 +45,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, String capacity, String location, Integer avatarIndex) {
+    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, Integer capacity, String location, Integer avatarIndex) {
         DashboardEgrowerMasterGreenHousesCardFragment fragment = new DashboardEgrowerMasterGreenHousesCardFragment();
         fragment.setOwner(owner);
         fragment.setName(name);
@@ -77,7 +77,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         doneButton.setVisibility(View.GONE);
         editTextOwner.setText(this.owner);
         editTextName.setText(name);
-        editTextCapacity.setText(capacity);
+        editTextCapacity.setText(capacity.toString());
         editTextLocation.setText(location);
         editTextOwner.setFocusable(false);
         editTextName.setFocusable(false);
@@ -106,14 +106,14 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
             public void onClick(View v) {
                 String nameOld = name;
                 String nameNew = editTextName.getText().toString();
-                String capacity = editTextCapacity.getText().toString();
+                Integer capacity = getCapacity();
                 String location = editTextLocation.getText().toString();
                 updateGreenhouse(nameOld, nameNew, capacity,location);
             }
         });
         return rootView;
     }
-    public void updateGreenhouse(String nameOld, String nameNew, String capacity, String location){
+    public void updateGreenhouse(String nameOld, String nameNew, Integer capacity, String location){
         dashboardEgrowerMasterController.updateGreenhouse( this, nameOld, nameNew, capacity,location);
     }
 
@@ -213,11 +213,11 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         this.name = name;
     }
 
-    public String getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 

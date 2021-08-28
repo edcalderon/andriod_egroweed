@@ -30,6 +30,7 @@ public class MainActivityLogin extends AppCompatActivity {
     public static final String Email = "emailKey";
     public static final String Name = "nameKey";
     public static final String Roll = "rollKey";
+    public static final String Balance = "balanceKey";
 
 
     @Override
@@ -69,7 +70,6 @@ public class MainActivityLogin extends AppCompatActivity {
 
         getSupportActionBar().hide();
         mainActivityControllerLogin = new MainActivityControllerLogin();
-
     }
 
     public void login(){
@@ -85,6 +85,7 @@ public class MainActivityLogin extends AppCompatActivity {
         editor.putString(Email, user.getEmail());
         editor.putString(Name, user.getName());
         editor.putString(Roll, user.getRoll());
+        editor.putFloat(Balance,user.getWallet().getBalance());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){
             Intent newActivity = new Intent(this, Dashboard.class);

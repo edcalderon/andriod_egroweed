@@ -16,21 +16,24 @@ public class DashboardUserInformationFragment extends Fragment {
     private String email;
     private Integer avatar;
     private String roll;
+    private float balance;
     private View rootView;
     private TextView emailTextView;
     private ImageView avatarImageView;
     private TextView rollTextView;
+    private TextView balanceTextView;
 
     public DashboardUserInformationFragment() {
         // Required empty public constructor
     }
 
-    public static DashboardUserInformationFragment newInstance(String name, Integer avatar, String roll) {
+    public static DashboardUserInformationFragment newInstance(String name, Integer avatar, String roll, Float balance) {
         DashboardUserInformationFragment fragment = new DashboardUserInformationFragment();
         fragment.setEmail(name);
         fragment.setName(name);
         fragment.setAvatar(avatar);
         fragment.setRoll(roll);
+        fragment.setBalance(balance);
         return fragment;
     }
 
@@ -47,8 +50,10 @@ public class DashboardUserInformationFragment extends Fragment {
         emailTextView = rootView.findViewById(R.id.user_email_user_information_fragment);
         avatarImageView = rootView.findViewById(R.id.avatar_information_fragment);
         rollTextView = rootView.findViewById(R.id.textView_roll_user_fragment2);
+        balanceTextView = rootView.findViewById(R.id.textView_bca_balance_user_information_fragment);
         emailTextView.setText(name);
-        rollTextView.setText(this.getRoll());
+        rollTextView.setText(getRoll());
+        balanceTextView.setText(String.valueOf(getBalance()));
 
         switch (avatar){
             case 0:
@@ -100,6 +105,14 @@ public class DashboardUserInformationFragment extends Fragment {
 
     public void setRoll(String roll) {
         this.roll = roll;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 
 }
