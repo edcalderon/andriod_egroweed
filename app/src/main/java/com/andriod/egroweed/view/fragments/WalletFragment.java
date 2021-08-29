@@ -31,6 +31,7 @@ public class WalletFragment extends Fragment {
     private Button setButton;
     private String ownerEmail;
     private WalletFragmentController walletFragmentController;
+    public static final String Balance = "balanceKey";
 
 
     public WalletFragment() {
@@ -74,6 +75,10 @@ public class WalletFragment extends Fragment {
     }
 
     public void updateUserBalanceSucceed(Float newBalance) {
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putFloat(Balance,newBalance);
+        editor.commit();
         balance.setText(String.valueOf(newBalance));
     }
 }

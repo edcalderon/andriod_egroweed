@@ -31,6 +31,7 @@ public class MainActivityLogin extends AppCompatActivity {
     public static final String Name = "nameKey";
     public static final String Roll = "rollKey";
     public static final String Balance = "balanceKey";
+    public static final String Avatar = "avatarKey";
 
 
     @Override
@@ -85,6 +86,7 @@ public class MainActivityLogin extends AppCompatActivity {
         editor.putString(Email, user.getEmail());
         editor.putString(Name, user.getName());
         editor.putString(Roll, user.getRoll());
+        editor.putInt(Avatar, user.getAvatar());
         editor.putFloat(Balance,user.getWallet().getBalance());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){

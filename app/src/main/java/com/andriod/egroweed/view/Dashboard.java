@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -53,6 +54,11 @@ public class Dashboard extends AppCompatActivity  {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.purple_500));
         }
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
     private void replace(Fragment fragment) {
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");

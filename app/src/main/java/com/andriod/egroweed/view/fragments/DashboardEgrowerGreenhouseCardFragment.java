@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andriod.egroweed.R;
-import com.andriod.egroweed.view.Dashboard;
 
 import java.util.Locale;
 
@@ -69,7 +68,9 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         participateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorplantFormFragment.newInstance(name, getID()),"SPONSOR_FORM").commit();
+                DashboardEgrowerFragment parentFrag = ((DashboardEgrowerFragment)DashboardEgrowerGreenhouseCardFragment.this.getParentFragment());
+                parentFrag.removeVerticalTitle();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorPlantFormFragment.newInstance(name, getID()),"SPONSOR_FORM").commit();
             }
         });
         setAvatarImageView();

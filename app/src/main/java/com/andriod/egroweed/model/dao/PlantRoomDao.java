@@ -18,6 +18,9 @@ public interface PlantRoomDao {
     @Query("SELECT * FROM plants WHERE owner = :ownerQuery")
     List<Plant> getPlantsByOwner(String ownerQuery);
 
+    @Query("SELECT * FROM plants WHERE id = :idQuery")
+    Plant getPlantById(Long idQuery);
+
     @Insert
     void insertAll(Plant ... Plants );
     @Insert

@@ -15,6 +15,7 @@
     <string name="app_profile_avatar">Avatar</string>
     <string name="app_nav_open">Open</string>
     <string name="app_nav_close">Close</string>
+    <string name="app_vertical_section_tittle">Your Sponsored Plants</string>
     <string-array name="roles">
         <item>E-grower</item>
         <item>E-grower Master</item>

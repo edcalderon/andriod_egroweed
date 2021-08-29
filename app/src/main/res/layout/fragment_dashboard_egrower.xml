@@ -34,6 +34,7 @@
                 app:layout_constraintTop_toTopOf="@+id/horizontalScrollView2" />
 
             <Space
+                android:id="@+id/space2"
                 android:layout_width="wrap_content"
                 android:layout_height="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/textView7"
@@ -55,14 +56,33 @@
                     android:layout_height="match_parent" />
             </HorizontalScrollView>
 
+            <TextView
+                android:id="@+id/textView_vertical_scroll_section_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_vertical_section_tittle"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Space
+                android:id="@+id/space"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="400dp"
                 android:layout_height="295dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.571"
+                app:layout_constraintHorizontal_bias="0.428"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
                 app:layout_constraintVertical_bias="0.0">
@@ -71,7 +91,9 @@
                     android:id="@+id/egrower_menu_linear_layout_vertical_scroll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" />
+                    android:orientation="vertical">
+
+                </LinearLayout>
             </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

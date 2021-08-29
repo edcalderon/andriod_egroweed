@@ -1,5 +1,7 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.andriod.egroweed.R;
+import com.andriod.egroweed.view.MainActivity;
 
 public class DashboardUserInformationFragment extends Fragment {
     private String name;
@@ -22,6 +25,7 @@ public class DashboardUserInformationFragment extends Fragment {
     private ImageView avatarImageView;
     private TextView rollTextView;
     private TextView balanceTextView;
+    private static final String BALANCE = "BALANCE";
 
     public DashboardUserInformationFragment() {
         // Required empty public constructor
@@ -34,13 +38,26 @@ public class DashboardUserInformationFragment extends Fragment {
         fragment.setAvatar(avatar);
         fragment.setRoll(roll);
         fragment.setBalance(balance);
+        Bundle args = new Bundle();
+        args.putFloat(BALANCE, balance);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            balance = getArguments().getFloat(BALANCE);
+        }
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        float balance = sharedpreferences.getFloat("balanceKey", (float)0.0);
+        this.setBalance(balance);
     }
 
     @Override

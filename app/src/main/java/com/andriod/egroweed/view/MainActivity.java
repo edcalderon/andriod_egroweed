@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SESSION = "MyPrefs" ;
     public static final String Email = "emailKey";
     public static final String Roll = "rollKey";
+    public static final String Avatar = "avatarKey";
     public static final String Balance = "balanceKey";
 
 
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString(Email, user.getEmail());
         editor.putString(Roll, user.getRoll());
+        editor.putInt(Avatar, user.getAvatar());
         editor.putFloat(Balance,user.getWallet().getBalance());
         editor.apply();
         if(user.getRoll().compareTo("E-grower")==0){

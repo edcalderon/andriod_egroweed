@@ -5,12 +5,13 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.DashboardEgrowerSponsoredPlantsFragment">
+    tools:context=".view.fragments.DashboardEgrowerSponsoredPlantsCardFragment">
 
     <Space
         android:id="@+id/space3"
         android:layout_width="0dp"
         android:layout_height="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +19,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="398dp"
-        android:layout_height="145dp"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="#A8A5A5"
         app:cardBackgroundColor="#EFEFEF"
         app:cardCornerRadius="25dp"
@@ -34,24 +39,286 @@
 
             <ImageView
                 android:id="@+id/imageView11"
-                android:layout_width="86dp"
-                android:layout_height="92dp"
+                android:layout_width="62dp"
+                android:layout_height="47dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_drawing_plant"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_drawing_plant" />
 
             <TextView
                 android:id="@+id/textView_sponsored_plants_card_sponsored_plants"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/imageView11"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
-                app:layout_constraintHorizontal_bias="0.392"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="@+id/imageView11" />
+
+            <TextView
+                android:id="@+id/textView_greenhouseName_sponsored_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="LA MORINDA"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                app:layout_constraintHorizontal_bias="0.36"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
-                app:layout_constraintTop_toTopOf="@+id/imageView11" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView11"
+                app:layout_constraintVertical_bias="0.07999998" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="in"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="@+id/imageView11" />
+
+
+            <ProgressBar
+                android:id="@+id/progressBar_cloning_sponsored_card"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circle"
+                android:rotation="-90"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.444"
+                tools:progressDrawable="@drawable/circle" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_growing_sponsored_card"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_flowering_sponsored_card"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_harvesting_sponsored_card"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintVertical_bias="0.0"
+                tools:progressDrawable="@drawable/circle" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cloning"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_cloning_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Growing"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_growing_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flowering"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_flowering_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harvesting"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_harvesting_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_cloning_sponsored_card"
+                android:layout_width="23dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_cloning"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintVertical_bias="0.44" />
+
+            <ImageView
+                android:id="@+id/imageView_growing_sponsored_card"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_growing_plant"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintVertical_bias="0.45" />
+
+            <ImageView
+                android:id="@+id/imageView_flowering_sponsered_card"
+                android:layout_width="23dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_bud_1_"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_flowering_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_harvesting_sponsored_card"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_harvest_1_"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_harvesting_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView_days_left_cloning_sponsored_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 days left"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_cloning_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView_days_left_growing_sponsored_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45 days left"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_growing_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView_days_left_flowering_sponsored_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45 days left"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_flowering_sponsored_card" />
+
+            <TextView
+                android:id="@+id/textView_days_left_harvesting_sponsored_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 days left"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_harvesting_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_arrow_1_sponsored_card"
+                android:layout_width="20dp"
+                android:layout_height="21dp"
+                android:src="@drawable/ic_baseline_arrow_right_alt_24"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintEnd_toStartOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_cloning_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_cloning_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_arrow_2_sponsored_card"
+                android:layout_width="20dp"
+                android:layout_height="21dp"
+                android:src="@drawable/ic_baseline_arrow_right_alt_24"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintEnd_toStartOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_growing_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_growing_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_arrow_3_sponsored_card"
+                android:layout_width="20dp"
+                android:layout_height="21dp"
+                android:src="@drawable/ic_baseline_arrow_right_alt_24"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintEnd_toStartOf="@+id/progressBar_harvesting_sponsored_card"
+                app:layout_constraintStart_toEndOf="@+id/progressBar_flowering_sponsored_card"
+                app:layout_constraintTop_toTopOf="@+id/progressBar_flowering_sponsored_card" />
+
+            <ImageView
+                android:id="@+id/imageView_early_sold_sponsored_card"
+                android:layout_width="16dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_payment_method"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView_days_left_harvesting_sponsored_card" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
