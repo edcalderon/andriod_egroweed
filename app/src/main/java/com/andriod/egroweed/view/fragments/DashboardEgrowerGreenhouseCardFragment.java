@@ -1,5 +1,8 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -70,10 +73,15 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
             public void onClick(View v) {
                 DashboardEgrowerFragment parentFrag = ((DashboardEgrowerFragment)DashboardEgrowerGreenhouseCardFragment.this.getParentFragment());
                 parentFrag.removeVerticalTitle();
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorPlantFormFragment.newInstance(name, getID()),"SPONSOR_FORM").commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsorPlantFormFragment.newInstance(name, getGreenhouseId()),"SPONSOR_FORM").commit();
             }
         });
         setAvatarImageView();
+        if(capacity <=0){
+            participateButton.setEnabled(false);
+            participateButton.setText("SOLD OUT");
+            participateButton.getBackground().setColorFilter(0x77000000,  PorterDuff.Mode.SRC_ATOP);
+        }
         return rootView;
     }
 
@@ -113,7 +121,7 @@ public class DashboardEgrowerGreenhouseCardFragment extends Fragment {
         this.name = name;
     }
 
-    public Integer getID() {
+    public Integer getGreenhouseId() {
         return id;
     }
 

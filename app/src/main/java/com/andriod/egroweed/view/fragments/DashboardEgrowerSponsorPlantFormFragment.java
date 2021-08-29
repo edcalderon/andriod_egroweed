@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
+import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
 import com.andriod.egroweed.view.MainActivity;
 
@@ -30,7 +31,7 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
     private View rootView;
     private SeekBar seekBar;
     private String name;
-    private Integer greenhouseID;
+    private Integer greenhouseId;
     private TextView textViewSeekBar;
     private TextView greenHouseName;
     private ImageView avatarImageView;
@@ -50,9 +51,10 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
     public static DashboardEgrowerSponsorPlantFormFragment newInstance(String name, Integer greenhouseID) {
         DashboardEgrowerSponsorPlantFormFragment fragment = new DashboardEgrowerSponsorPlantFormFragment();
         fragment.setName(name);
-        fragment.setGreenhouseID(greenhouseID);
+        fragment.setGreenhouseId(greenhouseID);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
         closeButton = rootView.findViewById(R.id.button_close_sponsor_form);
         avatarImageView = rootView.findViewById(R.id.imageView_plant_sponsor_form);
         greenHouseName.setText(getName().toUpperCase(Locale.ROOT));
+        dashboardEgrowerController = new DashboardEgrowerController();
+        setMaxCapacity();
         textViewSeekBar.setText(seekBar.getProgress()+ "/" + seekBar.getMax());
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int value = 0;
@@ -139,7 +143,7 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Integer plantsToSponsor = seekBar.getProgress();
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseID(),getName()),"CONFIRM_FORM").commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseId(),getName()),"CONFIRM_FORM").commit();
             }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -148,8 +152,16 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
                 checkIfUserHavePlants();
             }
         });
-        dashboardEgrowerController = new DashboardEgrowerController();
         return rootView;
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        setMaxCapacity();
+    }
+    private void setMaxCapacity(){
+        Greenhouse greenhouse = dashboardEgrowerController.getGreenhouseById(this, getGreenhouseId());
+        seekBar.setMax(greenhouse.getCapacity());
     }
     public void checkIfUserHavePlants(){
         SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
@@ -162,7 +174,7 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
                 Integer quantity = plant.getQuantity();
                 String greenhouseName = plant.getGreenhouse();
                 Long plantId = plant.getId();
-                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName, plantId, getGreenhouseID())).commit();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName, plantId, getGreenhouseId())).commit();
             }
         } else if(plantsOwned.isEmpty()){
             getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();
@@ -202,11 +214,12 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
         this.name = name;
     }
 
-    public Integer getGreenhouseID() {
-        return greenhouseID;
+    public Integer getGreenhouseId() {
+        return greenhouseId;
     }
 
-    public void setGreenhouseID(Integer greenhouseID) {
-        this.greenhouseID = greenhouseID;
+    public void setGreenhouseId(Integer greenhouseId) {
+        this.greenhouseId = greenhouseId;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.andriod.egroweed.controller;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.andriod.egroweed.model.LocalStorage;
@@ -27,6 +28,11 @@ public class DashboardEgrowerController {
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
         List<Greenhouse> greenhouses = greenhouseRoomDao.getAll();
         return greenhouses;
+    }
+    public Greenhouse getGreenhouseById(@NonNull Fragment fragment, Integer greenhouseId) {
+        this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
+        Greenhouse greenhouse = greenhouseRoomDao.getGreenhouseById(greenhouseId);
+        return greenhouse;
     }
 
     public void sponsorPlant(DashboardEgrowerConfirmSponsorFragment fragment, Integer plantsToSponsor, Integer greenhouseID, String owner) {
