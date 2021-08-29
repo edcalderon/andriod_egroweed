@@ -77,7 +77,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dashboard_egrower_sponsored_plants_card, container, false);
-        textViewSponsoredPlants = rootView.findViewById(R.id.textView_sponsored_plants_card_sponsored_plants);
+        textViewSponsoredPlants = rootView.findViewById(R.id.textView_sponsored_plants);
         textViewGreenhouseName = rootView.findViewById(R.id.textView_greenhouseName_sponsored_card);
         cloningProgressBar = rootView.findViewById(R.id.progressBar_cloning_sponsored_card);
         growingProgressBar = rootView.findViewById(R.id.progressBar_growing_sponsored_card);
@@ -139,6 +139,8 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
                 if(daysLeftCloning==0 && daysLeftGrowing==0 && daysLeftFlowering ==0 && daysLeftHarvesting>0){
                     setProgress(harvestingProgressBar,textViewDaysLeftHarvesting,imageViewHarvesting,daysLeftHarvesting, imageViewArrow3);
                     daysLeftHarvesting = daysLeftHarvesting - 1;
+                } else {
+                    sellCrop(getPlantId());
                 }
             }
         });
@@ -150,6 +152,9 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         }
         if(daysLeftFlowering == 0){
             imageViewArrow3.setVisibility(View.VISIBLE);
+        }
+        if(daysLeftHarvesting == 0){
+            sellCrop(getPlantId());
         }
         imageViewEarlySold.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +178,12 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         }
     }
 
+    private void sellCrop(Long plantId){
+        Fragment fragment = getParentFragmentManager().findFragmentByTag("PLANT_CARD_"+plantId);
+        getParentFragmentManager().beginTransaction().remove(fragment).commit();
+        getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredCardSucceedFragment.newInstance(getNumberOfSponsoredPlants(), getPlantId()), "SUCCEED_CARD_" + plantId).commit();
+    }
+
     private void showEarlySoldDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Are you sure to early sold your plants? We will return you the initial cost of plants.")
@@ -180,7 +191,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        earlySoldPlant(getPlantId(), getGreenhouseId());
+                        earlySellPlant(getPlantId(), getGreenhouseId());
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -193,11 +204,11 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         dialog.show();
     }
 
-    private void earlySoldPlant(Long plantId, Integer greenhouseId){
+    private void earlySellPlant(Long plantId, Integer greenhouseId){
         SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
         String ownerEmail = sharedpreferences.getString("emailKey", "");
         Plant plant = dashboardEgrowerController.getPlantById(this, plantId);
-        dashboardEgrowerController.earlySoldPlant(this, plant,ownerEmail, greenhouseId);
+        dashboardEgrowerController.earlySellPlant(this, plant,ownerEmail, greenhouseId);
     }
 
     public void earlySoldPlantSucceed(Plant plant, Float newBalance){

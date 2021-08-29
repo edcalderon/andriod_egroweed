@@ -12,6 +12,7 @@ import com.andriod.egroweed.model.pojo.User;
 import com.andriod.egroweed.model.pojo.Wallet;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerConfirmSponsorFragment;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerFragment;
+import com.andriod.egroweed.view.fragments.DashboardEgrowerSponsoredCardSucceedFragment;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerSponsoredPlantsCardFragment;
 
 
@@ -64,7 +65,7 @@ public class DashboardEgrowerController {
         List<Plant> plants = plantRoomDao.getPlantsByOwner(ownerEmail);
         return plants;
     }
-    public void earlySoldPlant(DashboardEgrowerSponsoredPlantsCardFragment fragment, Plant plant, String owner, Integer greenhouseId){
+    public void earlySellPlant(DashboardEgrowerSponsoredPlantsCardFragment fragment, Plant plant, String owner, Integer greenhouseId){
         this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
         this.userRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).userRoomDao();
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
@@ -80,6 +81,26 @@ public class DashboardEgrowerController {
         this.greenhouseRoomDao.updateOne(greenhouse);
         plantRoomDao.deleteOne(plant);
         fragment.earlySoldPlantSucceed(plant, newBalance);
+    }
+
+    public void sellCrop(DashboardEgrowerSponsoredCardSucceedFragment fragment, Long plantId){
+        this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
+        this.userRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).userRoomDao();
+        this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
+        Plant plant = plantRoomDao.getPlantById(plantId);
+        Greenhouse greenhouse = greenhouseRoomDao.getGreenhouseById(plant.getGreenhouseId());
+        greenhouse.setCapacity(greenhouse.getCapacity() + plant.getQuantity());
+        User user = userRoomDao.getUserByEmail(plant.getOwner());
+        float actualUserBalance = user.getWallet().getBalance();
+        float earning = plant.getPrice()* (float)0.13;
+        float newBalance = actualUserBalance + (plant.getPrice() + earning);
+        Wallet wallet = new Wallet();
+        wallet.setBalance(newBalance);
+        user.setWallet(wallet);
+        this.userRoomDao.updateOne(user);
+        this.greenhouseRoomDao.updateOne(greenhouse);
+        plantRoomDao.deleteOne(plant);
+        fragment.sellCropSucceed(plant, newBalance, earning);
     }
 
     public Plant getPlantById(Fragment fragment, Long id) {
