@@ -13,7 +13,7 @@ import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
 import com.andriod.egroweed.model.pojo.User;
 
-@Database(entities = {User.class, Greenhouse.class, Plant.class}, version = 15)
+@Database(entities = {User.class, Greenhouse.class, Plant.class}, version = 17)
 public abstract class LocalStorage extends RoomDatabase {
     private static LocalStorage LocalStorage;
 

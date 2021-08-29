@@ -162,7 +162,7 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
                 Integer quantity = plant.getQuantity();
                 String greenhouseName = plant.getGreenhouse();
                 Long plantId = plant.getId();
-                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName, plantId)).commit();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName, plantId, getGreenhouseID())).commit();
             }
         } else if(plantsOwned.isEmpty()){
             getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();

@@ -114,19 +114,25 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
         editor.commit();
         showDialog("Success!", "you have been sponsored " + plants + " plants", false);
         checkIfUserHavePlants();
-        updateGreenhouseCard();
+        updateGreenhouseCards();
         getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll, newBalance),"USER_INFORMATION").commit();
     }
 
-    public void updateGreenhouseCard(){
-        Greenhouse greenhouse = dashboardEgrowerController.getGreenhouseById(this,getGreenhouseID());
-        String greenhouseOwner = greenhouse.getOwner();
-        String name = greenhouse.getName();
-        Integer id = greenhouse.getId();
-        Integer capacity = greenhouse.getCapacity();
-        String location = greenhouse.getLocation();
-        Integer avatarIndex = greenhouse.getAvatar();
-        getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(greenhouseOwner,name,id,capacity,location,avatarIndex), "GH_CARD_"+id).commit();
+    public void updateGreenhouseCards(){
+        List<Greenhouse> greenhouses = dashboardEgrowerController.getAllGreenhouses(this);
+        if(!greenhouses.isEmpty()){
+            for (Greenhouse greenhouse: greenhouses) {
+                String greenhouseOwner = greenhouse.getOwner();
+                String name = greenhouse.getName();
+                Integer capacity = greenhouse.getCapacity();
+                String location = greenhouse.getLocation();
+                Integer avatarIndex = greenhouse.getAvatar();
+                Integer id = greenhouse.getId();
+                Fragment fragment = getParentFragmentManager().findFragmentByTag("GH_CARD_"+id);
+                getParentFragmentManager().beginTransaction().remove(fragment).commit();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(greenhouseOwner,name,id,capacity,location,avatarIndex), "GH_CARD_"+id).commit();
+            }
+        }
     }
 
     public void checkIfUserHavePlants(){
@@ -140,7 +146,7 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
                 Integer quantity = plant.getQuantity();
                 String greenhouseName = plant.getGreenhouse();
                 Long plantId = plant.getId();
-                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity,greenhouseName,plantId)).commit();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity,greenhouseName,plantId,getGreenhouseID()), "PLANT_CARD_" + plant.getId()).commit();
             }
         } else if(plantsOwned.isEmpty()){
             getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredplantsEmptyFragment.newInstance()).commit();

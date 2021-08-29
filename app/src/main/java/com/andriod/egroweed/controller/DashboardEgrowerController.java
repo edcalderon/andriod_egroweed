@@ -22,16 +22,10 @@ public class DashboardEgrowerController {
     private UserRoomDao userRoomDao;
     private PlantRoomDao plantRoomDao;
 
-    public List<Greenhouse> getAllGreenhouses(DashboardEgrowerFragment fragment) {
+    public List<Greenhouse> getAllGreenhouses(Fragment fragment) {
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
         List<Greenhouse> greenhouses = greenhouseRoomDao.getAll();
         return greenhouses;
-    }
-
-    public Greenhouse getGreenhouseById(Fragment fragment, Integer id) {
-        this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
-        Greenhouse greenhouse = greenhouseRoomDao.getGreenhouseById(id);
-        return greenhouse;
     }
 
     public void sponsorPlant(DashboardEgrowerConfirmSponsorFragment fragment, Integer plantsToSponsor, Integer greenhouseID, String owner) {
@@ -43,14 +37,17 @@ public class DashboardEgrowerController {
         if ( greenhouse.getCapacity() < 0){
             fragment.errorSponsoringPlant();
         } else if ( greenhouse.getCapacity() >= plantsToSponsor) {
+            Float plantCost = plantsToSponsor * (float)300;
             Plant plant = new Plant();
             plant.setOwner(user.getEmail());
             plant.setGreenhouse(greenhouse.getName());
             plant.setQuantity(plantsToSponsor);
+            plant.setPrice(plantCost);
+            plant.setGreenhouseId(greenhouseID);
             greenhouse.setCapacity(greenhouse.getCapacity()-plantsToSponsor);
             this.plantRoomDao.insertOne(plant);
             float actualUserBalance = user.getWallet().getBalance();
-            float newBalance = actualUserBalance - plantsToSponsor*300;
+            float newBalance = actualUserBalance - plantCost;
             Wallet wallet = new Wallet();
             wallet.setBalance(newBalance);
             user.setWallet(wallet);
@@ -67,10 +64,22 @@ public class DashboardEgrowerController {
         List<Plant> plants = plantRoomDao.getPlantsByOwner(ownerEmail);
         return plants;
     }
-    public void earlySoldPlant(DashboardEgrowerSponsoredPlantsCardFragment fragment, Plant plant){
+    public void earlySoldPlant(DashboardEgrowerSponsoredPlantsCardFragment fragment, Plant plant, String owner, Integer greenhouseId){
         this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
+        this.userRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).userRoomDao();
+        this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
+        Greenhouse greenhouse = greenhouseRoomDao.getGreenhouseById(greenhouseId);
+        greenhouse.setCapacity(greenhouse.getCapacity()+ plant.getQuantity());
+        User user = userRoomDao.getUserByEmail(owner);
+        float actualUserBalance = user.getWallet().getBalance();
+        float newBalance = actualUserBalance + plant.getPrice();
+        Wallet wallet = new Wallet();
+        wallet.setBalance(newBalance);
+        user.setWallet(wallet);
+        this.userRoomDao.updateOne(user);
+        this.greenhouseRoomDao.updateOne(greenhouse);
         plantRoomDao.deleteOne(plant);
-        fragment.earlySoldPlantSucceed(plant);
+        fragment.earlySoldPlantSucceed(plant, newBalance);
     }
 
     public Plant getPlantById(Fragment fragment, Long id) {

@@ -9,7 +9,17 @@ public class Plant {
     private long id;
     private String owner;
     private String greenhouse;
+    private Integer greenhouseId;
     private Integer quantity;
+    private Float price;
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
 
     public long getId() {
         return id;
@@ -41,5 +51,13 @@ public class Plant {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Integer getGreenhouseId() {
+        return greenhouseId;
+    }
+
+    public void setGreenhouseId(Integer greenhouseId) {
+        this.greenhouseId = greenhouseId;
     }
 }

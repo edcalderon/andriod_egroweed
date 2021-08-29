@@ -69,7 +69,8 @@ public class DashboardEgrowerFragment extends Fragment {
                 Integer quantity = plant.getQuantity();
                 String greenhouseName =plant.getGreenhouse();
                 Long plantId = plant.getId();
-                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName,plantId)).commit();
+                Integer greenhouseId = plant.getGreenhouseId();
+                getChildFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredPlantsCardFragment.newInstance(quantity, greenhouseName,plantId, greenhouseId), "PLANT_CARD_"+plant.getId()).commit();
             }
         }
         if (plants.isEmpty()){

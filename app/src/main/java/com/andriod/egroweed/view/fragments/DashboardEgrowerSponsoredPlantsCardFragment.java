@@ -1,6 +1,8 @@
 package com.andriod.egroweed.view.fragments;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,7 +17,9 @@ import android.widget.TextView;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
+import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
+import com.andriod.egroweed.view.MainActivity;
 
 import java.util.List;
 import java.util.Locale;
@@ -43,6 +47,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
     private TextView textViewDaysLeftFlowering;
     private TextView textViewDaysLeftHarvesting;
     private String greenhouseName;
+    private Integer greenhouseId;
     private long plantId;
     private ProgressBar cloningProgressBar;
     private ProgressBar growingProgressBar;
@@ -54,11 +59,12 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerSponsoredPlantsCardFragment newInstance(Integer sponsoredPlants, String greenhouseName, Long plantId) {
+    public static DashboardEgrowerSponsoredPlantsCardFragment newInstance(Integer sponsoredPlants, String greenhouseName, Long plantId, Integer greenhouseId) {
         DashboardEgrowerSponsoredPlantsCardFragment fragment = new DashboardEgrowerSponsoredPlantsCardFragment();
         fragment.setNumberOfSponsoredPlants(sponsoredPlants);
         fragment.setGreenhouseName(greenhouseName);
         fragment.setPlantId(plantId);
+        fragment.setGreenhouseId(greenhouseId);
         return fragment;
     }
 
@@ -174,7 +180,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        earlySoldPlant(getPlantId());
+                        earlySoldPlant(getPlantId(), getGreenhouseId());
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -187,13 +193,19 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         dialog.show();
     }
 
-    private void earlySoldPlant(Long id){
-        Plant plant = dashboardEgrowerController.getPlantById(this, id);
-        dashboardEgrowerController.earlySoldPlant(this, plant);
+    private void earlySoldPlant(Long plantId, Integer greenhouseId){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        String ownerEmail = sharedpreferences.getString("emailKey", "");
+        Plant plant = dashboardEgrowerController.getPlantById(this, plantId);
+        dashboardEgrowerController.earlySoldPlant(this, plant,ownerEmail, greenhouseId);
     }
 
-    public void earlySoldPlantSucceed(Plant plant){
+    public void earlySoldPlantSucceed(Plant plant, Float newBalance){
+        Fragment fragment = getParentFragmentManager().findFragmentByTag("PLANT_CARD_"+plant.getId());
+        getParentFragmentManager().beginTransaction().remove(fragment).commit();
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        updateBalance(newBalance);
+        updateGreenhouseCards();
         builder.setMessage("You have been sold " + plant.getQuantity() + " plants of the green house " + plant.getGreenhouse())
                 .setTitle("Success!")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -206,7 +218,34 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         dialog.show();
     }
 
+    private void updateBalance(Float newBalance){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        String name = sharedpreferences.getString("nameKey", "" );
+        String roll = sharedpreferences.getString("rollKey", "" );
+        Integer avatar = sharedpreferences.getInt("avatarKey", 0 );
+        String Balance = "balanceKey";
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putFloat(Balance,newBalance);
+        editor.commit();
+        getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll, newBalance),"USER_INFORMATION").commit();
+    }
 
+    private void updateGreenhouseCards(){
+        List<Greenhouse> greenhouses = dashboardEgrowerController.getAllGreenhouses(this);
+        if(!greenhouses.isEmpty()){
+            for (Greenhouse greenhouse: greenhouses) {
+                String greenhouseOwner = greenhouse.getOwner();
+                String name = greenhouse.getName();
+                Integer capacity = greenhouse.getCapacity();
+                String location = greenhouse.getLocation();
+                Integer avatarIndex = greenhouse.getAvatar();
+                Integer id = greenhouse.getId();
+                Fragment fragment = getParentFragmentManager().findFragmentByTag("GH_CARD_"+id);
+                getParentFragmentManager().beginTransaction().remove(fragment).commit();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_horizontal_scroll, DashboardEgrowerGreenhouseCardFragment.newInstance(greenhouseOwner,name,id,capacity,location,avatarIndex), "GH_CARD_"+id).commit();
+            }
+        }
+    }
 
     public Integer getNumberOfSponsoredPlants() {
         return numberOfSponsoredPlants;
@@ -229,5 +268,13 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
 
     public void setPlantId(long plantId) {
         this.plantId = plantId;
+    }
+
+    public Integer getGreenhouseId() {
+        return greenhouseId;
+    }
+
+    public void setGreenhouseId(Integer greenhouseId) {
+        this.greenhouseId = greenhouseId;
     }
 }
