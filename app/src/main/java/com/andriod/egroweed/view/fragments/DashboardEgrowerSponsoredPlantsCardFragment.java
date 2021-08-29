@@ -181,7 +181,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
     private void sellCrop(Long plantId){
         Fragment fragment = getParentFragmentManager().findFragmentByTag("PLANT_CARD_"+plantId);
         getParentFragmentManager().beginTransaction().remove(fragment).commit();
-        getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredCardSucceedFragment.newInstance(getNumberOfSponsoredPlants(), getPlantId()), "SUCCEED_CARD_" + plantId).commit();
+        getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerSponsoredCardSucceedFragment.newInstance(getNumberOfSponsoredPlants(), getPlantId(), getGreenhouseName()), "SUCCEED_CARD_" + plantId).commit();
     }
 
     private void showEarlySoldDialog(){

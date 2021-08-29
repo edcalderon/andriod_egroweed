@@ -37,10 +37,10 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
                         replace(new DashboardEgrowerMasterFragment());
                         break;
                     case 1:
-                        replace(new ProfileFragment());
+                        replace(new WalletFragment());
                         break;
                     case 2:
-                        replace(new WalletFragment());
+                        replace(new ProfileFragment());
                         break;
                 }
                 return true;

@@ -21,15 +21,18 @@ import com.andriod.egroweed.model.pojo.Plant;
 import com.andriod.egroweed.view.MainActivity;
 
 import java.util.List;
+import java.util.Locale;
 
 
 public class DashboardEgrowerSponsoredCardSucceedFragment extends Fragment {
 
     private View rootView;
     private TextView textViewCroppedPlants;
+    private TextView textViewGreenhouseName;
     private Button buttonSellCrop;
     private Integer croppedPlants;
     private Long plantId;
+    private String greenhouseName;
     private DashboardEgrowerController dashboardEgrowerController;
 
 
@@ -37,10 +40,11 @@ public class DashboardEgrowerSponsoredCardSucceedFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerSponsoredCardSucceedFragment newInstance(Integer croppedPlants, Long plantId) {
+    public static DashboardEgrowerSponsoredCardSucceedFragment newInstance(Integer croppedPlants, Long plantId, String greenhouseName) {
         DashboardEgrowerSponsoredCardSucceedFragment fragment = new DashboardEgrowerSponsoredCardSucceedFragment();
         fragment.setCroppedPlants(croppedPlants);
         fragment.setPlantId(plantId);
+        fragment.setGreenhouseName((greenhouseName));
         return fragment;
     }
 
@@ -55,7 +59,9 @@ public class DashboardEgrowerSponsoredCardSucceedFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dashboard_egrower_sponsored_card_succeed, container, false);
         textViewCroppedPlants = rootView.findViewById(R.id.textView_croped_plants_sponsored_succeed_card);
+        textViewGreenhouseName = rootView.findViewById(R.id.textView_greenhouse_sponsored_succeed_card);
         textViewCroppedPlants.setText(getCroppedPlants() + " Plants cropped are ready to sell");
+        textViewGreenhouseName.setText(getGreenhouseName().toUpperCase(Locale.ROOT));
         buttonSellCrop = rootView.findViewById(R.id.button_sell_crop_sponsored_succeed_card);
         dashboardEgrowerController = new DashboardEgrowerController();
         buttonSellCrop.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +138,14 @@ public class DashboardEgrowerSponsoredCardSucceedFragment extends Fragment {
 
     public void setPlantId(Long plantId) {
         this.plantId = plantId;
+    }
+
+    public String getGreenhouseName() {
+        return greenhouseName;
+    }
+
+    public void setGreenhouseName(String greenhouseName) {
+        this.greenhouseName = greenhouseName;
     }
 
 
