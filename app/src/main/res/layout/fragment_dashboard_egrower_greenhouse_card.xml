@@ -68,10 +68,10 @@
 
             <TextView
                 android:id="@+id/textView_label_owner_card_egrower"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Owner"
+                android:layout_marginTop="32dp"
+                android:text="E-grower Master"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/textView_label_location_card_egrower"
