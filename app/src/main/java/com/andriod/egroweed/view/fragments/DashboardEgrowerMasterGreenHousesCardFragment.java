@@ -20,7 +20,10 @@ import android.widget.Toast;
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerMasterController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
+import com.andriod.egroweed.model.pojo.Plant;
 import com.andriod.egroweed.view.MainActivity;
+
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
@@ -31,6 +34,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
     private Integer capacity;
     private String location;
     private Integer avatarIndex;
+    private Integer greenhouseId;
     private EditText editTextOwner;
     private EditText editTextName;
     private EditText editTextCapacity;
@@ -39,19 +43,21 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
     private Button editButton;
     private Button deleteButton;
     private Button doneButton;
+    private Button manageButton;
     private DashboardEgrowerMasterController dashboardEgrowerMasterController;
 
     public DashboardEgrowerMasterGreenHousesCardFragment() {
         // Required empty public constructor
     }
 
-    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, Integer capacity, String location, Integer avatarIndex) {
+    public static DashboardEgrowerMasterGreenHousesCardFragment newInstance(String owner, String name, Integer capacity, String location, Integer avatarIndex, Integer greenhouseId) {
         DashboardEgrowerMasterGreenHousesCardFragment fragment = new DashboardEgrowerMasterGreenHousesCardFragment();
         fragment.setOwner(owner);
         fragment.setName(name);
         fragment.setCapacity(capacity);
         fragment.setLocation(location);
         fragment.setAvatar(avatarIndex);
+        fragment.setGreenhouseId(greenhouseId);
         return fragment;
     }
 
@@ -73,6 +79,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         editButton = rootView.findViewById(R.id.button_edit_greenhouse);
         deleteButton = rootView.findViewById(R.id.button_delete_greenhouse_card);
         doneButton = rootView.findViewById(R.id.button_done_greenhouse_card);
+        manageButton = rootView.findViewById(R.id.button_manage_greenhouse_master_card);
         deleteButton.setVisibility(View.GONE);
         doneButton.setVisibility(View.GONE);
         editTextOwner.setText(this.owner);
@@ -111,8 +118,28 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
                 updateGreenhouse(nameOld, nameNew, capacity,location);
             }
         });
+        manageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setManageView();
+            }
+        });
         return rootView;
     }
+
+    public void setManageView(){
+        DashboardEgrowerMasterController dashboardEgrowerMasterFragmentController = new DashboardEgrowerMasterController();
+        List<Plant> plants = dashboardEgrowerMasterFragmentController.findPlantsByGreenhouse(this, getGreenhouseId());
+        if(!plants.isEmpty()){
+            getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, breadcrumbFragment.newInstance()).commit();
+            for (Plant plant: plants){
+                String owner = plant.getOwner();
+                Integer quantity = plant.getQuantity();
+                getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerMasterSponsoredPlantsFragment.newInstance(owner,quantity), "PLANT_CARD_MASTER_"+plant.getId()).commit();
+            }
+        }
+    }
+
     public void updateGreenhouse(String nameOld, String nameNew, Integer capacity, String location){
         dashboardEgrowerMasterController.updateGreenhouse( this, nameOld, nameNew, capacity,location);
     }
@@ -126,6 +153,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
         doneButton.setVisibility(View.GONE);
         editButton.setVisibility(View.VISIBLE);
     }
+
     public void deleteGreenhouseDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Are you sure to delete this Greenhouse?")
@@ -235,6 +263,14 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
 
     public void setAvatar(Integer avatar) {
         this.avatarIndex = avatar;
+    }
+
+    public Integer getGreenhouseId() {
+        return greenhouseId;
+    }
+
+    public void setGreenhouseId(Integer greenhouseId) {
+        this.greenhouseId = greenhouseId;
     }
 
 

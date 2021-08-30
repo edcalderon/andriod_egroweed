@@ -51,6 +51,7 @@ public class DashboardEgrowerController {
             plant.setQuantity(plantsToSponsor);
             plant.setPrice(plantCost);
             plant.setGreenhouseId(greenhouseID);
+            plant.setState("pending");
             greenhouse.setCapacity(greenhouse.getCapacity()-plantsToSponsor);
             this.plantRoomDao.insertOne(plant);
             float actualUserBalance = user.getWallet().getBalance();

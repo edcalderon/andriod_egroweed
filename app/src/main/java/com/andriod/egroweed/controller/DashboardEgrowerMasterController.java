@@ -3,7 +3,9 @@ package com.andriod.egroweed.controller;
 
 import com.andriod.egroweed.model.LocalStorage;
 import com.andriod.egroweed.model.dao.GreenhouseRoomDao;
+import com.andriod.egroweed.model.dao.PlantRoomDao;
 import com.andriod.egroweed.model.pojo.Greenhouse;
+import com.andriod.egroweed.model.pojo.Plant;
 import com.andriod.egroweed.model.pojo.User;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterFragment;
 import com.andriod.egroweed.view.fragments.DashboardEgrowerMasterGreenHouseFormFragment;
@@ -16,6 +18,7 @@ import java.util.Random;
 public class DashboardEgrowerMasterController {
 
     private GreenhouseRoomDao greenhouseRoomDao;
+    private PlantRoomDao plantRoomDao;
 
     public List<Greenhouse> findGreenhousesByEmail(DashboardEgrowerMasterFragment fragment, String email) {
         this.greenhouseRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).greenhouseRoomDao();
@@ -54,5 +57,11 @@ public class DashboardEgrowerMasterController {
         greenhouse.setLocation(location);
         this.greenhouseRoomDao.updateOne(greenhouse);
         fragment.updateGreenhouseSucceed(greenhouse);
+    }
+
+    public List<Plant> findPlantsByGreenhouse(DashboardEgrowerMasterGreenHousesCardFragment fragment, Integer greenhouseId) {
+        this.plantRoomDao = LocalStorage.getLocalStorage(fragment.getActivity().getApplicationContext()).plantRoomDao();
+        List<Plant> plants = this.plantRoomDao.getPlantsByGreenhouseId(greenhouseId);
+        return plants;
     }
 }

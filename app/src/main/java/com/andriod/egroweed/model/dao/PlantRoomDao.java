@@ -21,8 +21,12 @@ public interface PlantRoomDao {
     @Query("SELECT * FROM plants WHERE id = :idQuery")
     Plant getPlantById(Long idQuery);
 
+    @Query("SELECT * FROM plants WHERE greenhouseId = :greenhouseIdQuery")
+    List <Plant> getPlantsByGreenhouseId(Integer greenhouseIdQuery);
+
     @Insert
     void insertAll(Plant ... Plants );
+
     @Insert
     void insertOne(Plant Plants);
 
@@ -36,4 +40,5 @@ public interface PlantRoomDao {
 
     @Delete
     void deleteOne(Plant Plant);
+
 }

@@ -12,6 +12,7 @@ public class Plant {
     private Integer greenhouseId;
     private Integer quantity;
     private Float price;
+    private String state;
 
     public Float getPrice() {
         return price;
@@ -59,5 +60,13 @@ public class Plant {
 
     public void setGreenhouseId(Integer greenhouseId) {
         this.greenhouseId = greenhouseId;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
