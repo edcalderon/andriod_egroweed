@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -59,8 +58,12 @@ public class Dashboard extends AppCompatActivity  {
         super.onResume();
     }
 
-    private void replace(Fragment fragment) {
-        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+    public void moveBottomBarOnSelect(Integer i){
+        bottomBar.setItemActiveIndex(i);
+
+    }
+    public void replace(Fragment fragment) {
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         float sessionBalance = sharedpreferences.getFloat("balanceKey", (float)0.0);

@@ -65,7 +65,8 @@ public class MainActivityLogin extends AppCompatActivity {
         registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent newActivity = new Intent(getApplicationContext(), MainActivityRegister.class);
+                startActivity(newActivity);
             }
         });
 

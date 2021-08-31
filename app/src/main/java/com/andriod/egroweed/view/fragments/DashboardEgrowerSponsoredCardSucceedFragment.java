@@ -18,7 +18,7 @@ import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
 import java.util.Locale;
@@ -96,7 +96,7 @@ public class DashboardEgrowerSponsoredCardSucceedFragment extends Fragment {
     }
 
     private void updateBalance(Float newBalance){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String name = sharedpreferences.getString("nameKey", "" );
         String roll = sharedpreferences.getString("rollKey", "" );
         Integer avatar = sharedpreferences.getInt("avatarKey", 0 );

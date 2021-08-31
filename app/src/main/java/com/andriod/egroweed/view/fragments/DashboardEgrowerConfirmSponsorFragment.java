@@ -14,14 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
@@ -95,7 +98,7 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
     }
 
     public void sponsorPlant(){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String owner = sharedpreferences.getString("emailKey", "" );
         dashboardEgrowerController.sponsorPlant(this, plantsToSponsor, getGreenhouseID(), owner);
     }
@@ -105,14 +108,14 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
     }
 
     public void successSponsoringPlant(Integer plants, Float newBalance) {
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String name = sharedpreferences.getString("nameKey", "" );
         String roll = sharedpreferences.getString("rollKey", "" );
         Integer avatar = sharedpreferences.getInt("avatarKey", 0 );
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putFloat(Balance,newBalance);
         editor.commit();
-        showDialog("Success!", "you have been sponsored " + plants + " plants", false);
+        Toasty.success(getContext(), "You have been sponsored " + plants + " plants", Toast.LENGTH_SHORT, true).show();
         checkIfUserHavePlants();
         updateGreenhouseCards();
         getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_user_information_fragment_dashboard, DashboardUserInformationFragment.newInstance(name, avatar, roll, newBalance),"USER_INFORMATION").commit();
@@ -136,7 +139,7 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
     }
 
     public void checkIfUserHavePlants(){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String ownerEmail = sharedpreferences.getString("emailKey", "");
         List<Plant> plantsOwned = dashboardEgrowerController.getAllPlantsByOwner(this, ownerEmail);
         if (!plantsOwned.isEmpty()){
@@ -175,7 +178,7 @@ public class DashboardEgrowerConfirmSponsorFragment extends Fragment {
     }
 
     public void showDialogConfirmSponsor(Integer plants, Float cost){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         float actualBalance = sharedpreferences.getFloat("balanceKey", (float)0.0);
         float totalCostOfPlants = calculateCost(getPlantsToSponsor());
         if (actualBalance < totalCostOfPlants){

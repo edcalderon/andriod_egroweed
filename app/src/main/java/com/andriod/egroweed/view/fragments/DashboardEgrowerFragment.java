@@ -15,7 +15,7 @@ import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class DashboardEgrowerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String owner = sharedpreferences.getString("emailKey", "" );
         name =  getArguments().getString("name");
         avatar =  getArguments().getInt("avatar");
@@ -90,7 +90,7 @@ public class DashboardEgrowerFragment extends Fragment {
     }
     public void onResume(){
         verticalTitle.setText("Sponsored Plants");
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         Float balance = sharedpreferences.getFloat("balanceKey", (float)0 );
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putFloat(Balance,balance);

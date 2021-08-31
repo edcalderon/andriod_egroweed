@@ -21,7 +21,7 @@ import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerMasterController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
 
@@ -180,7 +180,7 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
 
     public void deleteGreenhouseSucceed(Greenhouse greenhouse){
         Toasty.error(getContext(), owner + " " + greenhouse.getName()+ " Deleted!", Toast.LENGTH_SHORT, true).show();
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userRoll = getActivity().getIntent().getExtras().getString("userRoll") != null ? getActivity().getIntent().getExtras().getString("userRoll") : "";

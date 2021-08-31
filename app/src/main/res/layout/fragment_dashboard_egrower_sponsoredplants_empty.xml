@@ -26,10 +26,10 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="194dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginBottom="444dp"
-        android:text="To sponsor select a Green House and click in participate."
+        android:text="To participate SPONSOR in a greenhouse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="@+id/imageView9" />

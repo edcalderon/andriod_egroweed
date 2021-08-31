@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andriod.egroweed.view.MainActivity">
+    tools:context="com.andriod.egroweed.view.MainActivityRegister">
 
     <Button
         android:id="@+id/button_login_loginView"

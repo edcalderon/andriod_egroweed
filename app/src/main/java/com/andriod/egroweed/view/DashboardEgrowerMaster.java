@@ -53,7 +53,7 @@ public class DashboardEgrowerMaster extends AppCompatActivity  {
     }
 
     private void replace(Fragment fragment) {
-        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         float sessionBalance = sharedpreferences.getFloat("balanceKey", (float)0.0);

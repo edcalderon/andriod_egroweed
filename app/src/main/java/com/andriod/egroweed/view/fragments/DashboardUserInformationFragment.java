@@ -12,7 +12,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.andriod.egroweed.R;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.Dashboard;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 public class DashboardUserInformationFragment extends Fragment {
     private String name;
@@ -23,6 +24,7 @@ public class DashboardUserInformationFragment extends Fragment {
     private View rootView;
     private TextView emailTextView;
     private ImageView avatarImageView;
+    private ImageView walletImageView;
     private TextView rollTextView;
     private TextView balanceTextView;
     private static final String BALANCE = "BALANCE";
@@ -55,7 +57,7 @@ public class DashboardUserInformationFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         float balance = sharedpreferences.getFloat("balanceKey", (float)0.0);
         this.setBalance(balance);
     }
@@ -68,10 +70,27 @@ public class DashboardUserInformationFragment extends Fragment {
         avatarImageView = rootView.findViewById(R.id.avatar_information_fragment);
         rollTextView = rootView.findViewById(R.id.textView_roll_user_fragment2);
         balanceTextView = rootView.findViewById(R.id.textView_bca_balance_user_information_fragment);
+        walletImageView = rootView.findViewById(R.id.imageView_wallet_user_information_fragment);
         emailTextView.setText(name);
         rollTextView.setText(getRoll());
-        balanceTextView.setText(String.valueOf(getBalance()));
+        balanceTextView.setText(String.format("%.2f", getBalance()));
         setAvatarImageView(avatar);
+        avatarImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dashboard activity = (Dashboard) getActivity();
+                activity.replace(new ProfileFragment());
+                activity.moveBottomBarOnSelect(2);
+            }
+        });
+        walletImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dashboard activity = (Dashboard) getActivity();
+                activity.replace(new WalletFragment());
+                activity.moveBottomBarOnSelect(1);
+            }
+        });
         return  rootView;
     }
     public void setAvatarImageView(Integer avatarIndex){

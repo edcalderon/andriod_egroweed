@@ -56,30 +56,12 @@
                     android:layout_height="match_parent" />
             </HorizontalScrollView>
 
-            <TextView
-                android:id="@+id/textView_vertical_scroll_section_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_vertical_section_tittle"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Space
-                android:id="@+id/space"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="400dp"
-                android:layout_height="295dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_height="268dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.428"
@@ -96,6 +78,34 @@
                 </LinearLayout>
             </ScrollView>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView_vertical_scroll_section_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_vertical_section_tittle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.44" />
+
+                <Space
+                    android:id="@+id/space"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
@@ -103,9 +113,10 @@
     <FrameLayout
         android:id="@+id/egrower_menu_user_information_fragment_dashboard"
         android:layout_width="0dp"
-        android:layout_height="90dp"
+        android:layout_height="95dp"
+        app:layout_constraintBottom_toTopOf="@+id/dashboard_egrower_main_linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

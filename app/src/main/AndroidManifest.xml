@@ -11,16 +11,17 @@
         android:theme="@style/Theme.AppCompat.DayNight">
 
         <activity android:name="com.andriod.egroweed.view.MainActivityLogin"
-            android:windowSoftInputMode="adjustNothing"></activity>
-        <activity android:name="com.andriod.egroweed.view.Dashboard"
-            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
-        <activity android:name="com.andriod.egroweed.view.DashboardEgrowerMaster"
-            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
-        <activity android:name="com.andriod.egroweed.view.MainActivity">
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.andriod.egroweed.view.Dashboard"
+            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
+        <activity android:name="com.andriod.egroweed.view.DashboardEgrowerMaster"
+            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
+        <activity android:name="com.andriod.egroweed.view.MainActivityRegister">
         </activity>
     </application>
 

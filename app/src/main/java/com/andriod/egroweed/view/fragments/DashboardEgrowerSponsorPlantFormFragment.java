@@ -15,15 +15,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
 import java.util.Locale;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
@@ -142,9 +145,8 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
         sponsorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer plantsToSponsor = seekBar.getProgress();
-                getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseId(),getName()),"CONFIRM_FORM").commit();
-            }
+                    sponsor();
+                }
         });
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,12 +161,20 @@ public class DashboardEgrowerSponsorPlantFormFragment extends Fragment {
         super.onResume();
         setMaxCapacity();
     }
+    private void sponsor(){
+        if(seekBar.getProgress()>0){
+            Integer plantsToSponsor = seekBar.getProgress();
+            getParentFragmentManager().beginTransaction().replace(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerConfirmSponsorFragment.newInstance(plantsToSponsor, getGreenhouseId(),getName()),"CONFIRM_FORM").commit();
+        } else {
+            Toasty.error(getContext(), "One plant minimum", Toast.LENGTH_SHORT, true).show();
+        }
+    }
     private void setMaxCapacity(){
         Greenhouse greenhouse = dashboardEgrowerController.getGreenhouseById(this, getGreenhouseId());
         seekBar.setMax(greenhouse.getCapacity());
     }
     public void checkIfUserHavePlants(){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String ownerEmail = sharedpreferences.getString("emailKey", "");
         List<Plant> plantsOwned = dashboardEgrowerController.getAllPlantsByOwner(this, ownerEmail);
         if (!plantsOwned.isEmpty()){

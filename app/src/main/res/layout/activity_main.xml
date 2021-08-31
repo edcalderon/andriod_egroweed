@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andriod.egroweed.view.MainActivity">
+    tools:context="com.andriod.egroweed.view.MainActivityRegister">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -216,9 +216,9 @@
         android:id="@+id/button_login_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have an Account? Loging here!"
+        android:text="Have an Account? Login here!"
         android:textColor="#303F9F"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/button_login_loginView"
         app:layout_constraintHorizontal_bias="0.506"

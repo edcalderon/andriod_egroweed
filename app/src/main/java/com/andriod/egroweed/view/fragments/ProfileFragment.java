@@ -21,7 +21,8 @@ import android.widget.Toast;
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.ProfileFragmentController;
 import com.andriod.egroweed.model.pojo.User;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityLogin;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import es.dmoral.toasty.Toasty;
 
@@ -109,7 +110,7 @@ public class ProfileFragment extends Fragment {
         String Name = "nameKey";
         String name = user.getName();
         nameEditText.setText(name);
-        SharedPreferences sharedpreferences = this.getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = this.getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString(Name, user.getName());
         editor.apply();
@@ -123,11 +124,11 @@ public class ProfileFragment extends Fragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+                        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.clear();
                         editor.apply();
-                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        Intent intent = new Intent(getContext(), MainActivityLogin.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }

@@ -20,13 +20,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="391dp"
-        android:layout_height="88dp"
+        android:layout_height="95dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#A8A5A5"
-        app:cardBackgroundColor="#512DA8"
+        app:cardBackgroundColor="#0097A7"
         app:cardCornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -39,19 +39,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
-                android:layout_width="30dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_width="40dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 app:cardBackgroundColor="#EFEFEF"
                 app:cardCornerRadius="0dp"
-                app:layout_constraintStart_toEndOf="@+id/imageView13"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardView4"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toEndOf="@+id/textView_greenhouse_sponsored_succeed_card"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
                 android:layout_width="275dp"
-                android:layout_height="90dp"
+                android:layout_height="95dp"
                 android:background="#4527A0"
                 app:cardBackgroundColor="#EFEFEF"
                 app:cardCornerRadius="25dp"
@@ -60,8 +63,8 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="275dp"
-                    android:layout_height="102dp">
+                    android:layout_width="270dp"
+                    android:layout_height="95dp">
 
                     <TextView
                         android:id="@+id/textView_croped_plants_sponsored_succeed_card"
@@ -136,34 +139,37 @@
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_cannabis_croped"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.095"
+                app:layout_constraintHorizontal_bias="0.091"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.511" />
+                app:layout_constraintVertical_bias="0.472" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One crop in"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageView13"
                 app:layout_constraintEnd_toEndOf="@+id/imageView13"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView13" />
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="@+id/imageView13"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/textView_greenhouse_sponsored_succeed_card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="17dp"
                 android:text="LA MORINDA"
-                android:textColor="#FFFFFF"
+                android:textColor="#0B0B0B"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView13"
                 app:layout_constraintStart_toStartOf="@+id/imageView13"

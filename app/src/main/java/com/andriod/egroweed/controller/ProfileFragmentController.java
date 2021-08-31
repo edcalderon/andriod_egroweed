@@ -1,13 +1,9 @@
 package com.andriod.egroweed.controller;
 
-import android.content.Context;
-
 import com.andriod.egroweed.model.LocalStorage;
 import com.andriod.egroweed.model.dao.UserRoomDao;
 import com.andriod.egroweed.model.pojo.User;
 import com.andriod.egroweed.view.fragments.ProfileFragment;
-import com.andriod.egroweed.view.MainActivity;
-
 
 
 public class ProfileFragmentController {

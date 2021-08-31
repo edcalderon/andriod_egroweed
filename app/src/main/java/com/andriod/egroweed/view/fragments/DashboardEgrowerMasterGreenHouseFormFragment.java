@@ -5,10 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.service.controls.actions.FloatAction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +17,8 @@ import android.widget.Toast;
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerMasterController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
-import com.andriod.egroweed.view.DashboardEgrowerMaster;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import es.dmoral.toasty.Toasty;
@@ -98,7 +94,7 @@ public class DashboardEgrowerMasterGreenHouseFormFragment extends Fragment {
     }
 
     public void returnToDashboard(){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String sessionEmail = sharedpreferences.getString("emailKey", "");
         String sessionName = sharedpreferences.getString("nameKey", "");
         String userRoll = getActivity().getIntent().getExtras().getString("userRoll") != null ? getActivity().getIntent().getExtras().getString("userRoll") : "";

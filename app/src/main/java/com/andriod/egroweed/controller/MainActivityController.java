@@ -2,7 +2,7 @@ package com.andriod.egroweed.controller;
 
 import com.andriod.egroweed.model.dao.UserRoomDao;
 import com.andriod.egroweed.model.pojo.Wallet;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 import com.andriod.egroweed.model.LocalStorage;
 import com.andriod.egroweed.model.pojo.User;
 
@@ -11,8 +11,8 @@ public class MainActivityController {
     //DAO  -> Data Access Object
     private UserRoomDao userRoomDao;
 
-    public User checkActualUser(MainActivity mainActivity){
-        this.userRoomDao = LocalStorage.getLocalStorage(mainActivity.getApplicationContext()).userRoomDao();
+    public User checkActualUser(MainActivityRegister mainActivityRegister){
+        this.userRoomDao = LocalStorage.getLocalStorage(mainActivityRegister.getApplicationContext()).userRoomDao();
         User user;
         user = this.userRoomDao.getUser();
         if (user != null){
@@ -21,8 +21,8 @@ public class MainActivityController {
         return null;
     }
 
-    public String checkUserEmail(MainActivity mainActivity, String email){
-        this.userRoomDao = LocalStorage.getLocalStorage(mainActivity.getApplicationContext()).userRoomDao();
+    public String checkUserEmail(MainActivityRegister mainActivityRegister, String email){
+        this.userRoomDao = LocalStorage.getLocalStorage(mainActivityRegister.getApplicationContext()).userRoomDao();
         User user;
         user = this.userRoomDao.getUserByEmail(email);
         if (user != null){
@@ -31,8 +31,8 @@ public class MainActivityController {
         return null;
     }
 
-    public void register(MainActivity mainActivity, String email, String password, Integer avatar, String roll){
-        this.userRoomDao = LocalStorage.getLocalStorage(mainActivity.getApplicationContext()).userRoomDao();
+    public void register(MainActivityRegister mainActivityRegister, String email, String password, Integer avatar, String roll){
+        this.userRoomDao = LocalStorage.getLocalStorage(mainActivityRegister.getApplicationContext()).userRoomDao();
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
@@ -42,18 +42,18 @@ public class MainActivityController {
         wallet.setBalance((float)0.012);
         user.setWallet(wallet);
         this.userRoomDao.insertOne(user);
-        mainActivity.registerSucceed(user);
+        mainActivityRegister.registerSucceed(user);
     }
 
-    public void updateRegisteredUser(MainActivity mainActivity, String email, String password, Integer avatar, String roll){
-        this.userRoomDao = LocalStorage.getLocalStorage(mainActivity.getApplicationContext()).userRoomDao();
+    public void updateRegisteredUser(MainActivityRegister mainActivityRegister, String email, String password, Integer avatar, String roll){
+        this.userRoomDao = LocalStorage.getLocalStorage(mainActivityRegister.getApplicationContext()).userRoomDao();
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
         user.setAvatar(avatar);
         user.setRoll(roll);
         this.userRoomDao.updateOne(user);
-        mainActivity.registerSucceed(user);
+        mainActivityRegister.registerSucceed(user);
     }
 
 }

@@ -19,4 +19,13 @@ public class WalletFragmentController {
         this.userRoomDao.updateOne(user);
         walletFragment.updateUserBalanceSucceed(user.getWallet().getBalance());
     }
+    public void addUserBalance(WalletFragment walletFragment, Float newBalance, String email){
+        this.userRoomDao = LocalStorage.getLocalStorage(walletFragment.getActivity().getApplicationContext()).userRoomDao();
+        User user = this.userRoomDao.getUserByEmail(email);
+        Wallet wallet = new Wallet();
+        wallet.setBalance(user.getWallet().getBalance() + newBalance);
+        user.setWallet(wallet);
+        this.userRoomDao.updateOne(user);
+        walletFragment.updateUserBalanceSucceed(user.getWallet().getBalance());
+    }
 }

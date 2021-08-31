@@ -14,15 +14,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.DashboardEgrowerController;
 import com.andriod.egroweed.model.pojo.Greenhouse;
 import com.andriod.egroweed.model.pojo.Plant;
-import com.andriod.egroweed.view.MainActivity;
+import com.andriod.egroweed.view.MainActivityRegister;
 
 import java.util.List;
 import java.util.Locale;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
@@ -205,7 +208,7 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
     }
 
     private void earlySellPlant(Long plantId, Integer greenhouseId){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String ownerEmail = sharedpreferences.getString("emailKey", "");
         Plant plant = dashboardEgrowerController.getPlantById(this, plantId);
         dashboardEgrowerController.earlySellPlant(this, plant,ownerEmail, greenhouseId);
@@ -217,20 +220,13 @@ public class DashboardEgrowerSponsoredPlantsCardFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         updateBalance(newBalance);
         updateGreenhouseCards();
-        builder.setMessage("You have been sold " + plant.getQuantity() + " plants of the green house " + plant.getGreenhouse())
-                .setTitle("Success!")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+        Toasty.error(getContext(), "You have been sold " + plant.getQuantity() + " plants.", Toast.LENGTH_SHORT, true).show();
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
     private void updateBalance(Float newBalance){
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivity.SESSION, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MainActivityRegister.SESSION, Context.MODE_PRIVATE);
         String name = sharedpreferences.getString("nameKey", "" );
         String roll = sharedpreferences.getString("rollKey", "" );
         Integer avatar = sharedpreferences.getInt("avatarKey", 0 );
