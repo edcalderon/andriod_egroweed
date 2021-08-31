@@ -10,10 +10,10 @@
         android:id="@+id/constraintLayout"
         android:layout_width="261dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/button_login_loginView"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword_input_register"
-        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword_input_register">
 
         <ImageView
@@ -75,31 +75,17 @@
         android:id="@+id/button_login_loginView"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="128dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="112dp"
         android:background="@drawable/rounded_corner"
         android:text="@string/button_register_user"
         android:textColor="#FFFFFF"
         android:textColorLink="@color/purple_500"
-        app:backgroundTint="@color/purple_500"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
-
-    <Button
-        android:id="@+id/button_login_register"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/rounded_corner"
-        android:text="@string/button_login"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#243773"
-        app:backgroundTint="@color/lila"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_login_loginView"
-        app:layout_constraintStart_toStartOf="@+id/button_login_loginView" />
 
     <ImageView
         android:id="@+id/app_login_logo"
@@ -107,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:contentDescription="@string/app_login_welcome_logo_description"
@@ -147,7 +133,7 @@
     <Spinner
         android:id="@+id/spinner_app_login_roles"
         android:layout_width="284dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword_input_register"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmail_login"
@@ -159,9 +145,10 @@
     <EditText
         android:id="@+id/editTextEmail_login"
         android:layout_width="284dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:autofillHints="@string/user_email_label_mandatory"
@@ -177,7 +164,7 @@
         android:id="@+id/app_login_label_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="@string/user_email_label"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmail_login"
         app:layout_constraintHorizontal_bias="0.0"
@@ -213,26 +200,28 @@
     <EditText
         android:id="@+id/editTextTextPassword_input_register"
         android:layout_width="284dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="16dp"
         android:autofillHints="@string/user_email_label_mandatory"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="@+id/spinner_app_login_roles"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spinner_app_login_roles"
         app:layout_constraintTop_toBottomOf="@+id/textView_password_register"
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/textView_or_register"
+        android:id="@+id/button_login_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_register_or"
-        app:layout_constraintBottom_toTopOf="@+id/button_login_register"
+        android:text="Have an Account? Loging here!"
+        android:textColor="#303F9F"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/button_login_loginView"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/button_login_loginView"
         app:layout_constraintTop_toBottomOf="@+id/button_login_loginView" />
 

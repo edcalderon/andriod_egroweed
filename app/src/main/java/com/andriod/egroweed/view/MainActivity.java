@@ -5,13 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -26,7 +26,8 @@ import es.dmoral.toasty.Toasty;
 public class MainActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
-    private Button leftAvatarButton, rightAvatarButton, registerButton, loginButton;
+    private Button leftAvatarButton, rightAvatarButton, registerButton;
+    private TextView loginButton;
     private ImageView avatarImageView;
     private Spinner spinnerRoles;
     private int avatarIndex;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 avatarToRight(avatarImageView);
             }
         });
-        avatarIndex = 0;
+        avatarIndex = 7;
         getSupportActionBar().hide();
         mainActivityController = new MainActivityController();
     }
@@ -190,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setAvatarIndex(int newAvatarIndex){
         if(newAvatarIndex < 0){
-            avatarIndex = 4;
+            avatarIndex = 9;
         } else {
-            avatarIndex = newAvatarIndex % 5;
+            avatarIndex = newAvatarIndex % 10;
         }
         setAvatarImageView();
     }
@@ -205,13 +206,28 @@ public class MainActivity extends AppCompatActivity {
                 avatarImageView.setImageResource(R.drawable.ic_avatar_2);
                 break;
             case 2:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_3);
+                avatarImageView.setImageResource(R.drawable.ic_avatar_3_);
                 break;
             case 3:
                 avatarImageView.setImageResource(R.drawable.ic_avatar_4);
                 break;
             case 4:
                 avatarImageView.setImageResource(R.drawable.ic_avatar_5);
+                break;
+            case 5:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_6);
+                break;
+            case 6:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_7);
+                break;
+            case 7:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_8);
+                break;
+            case 8:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_9);
+                break;
+            case 9:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_10);
                 break;
         }
     }

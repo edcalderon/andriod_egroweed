@@ -75,23 +75,7 @@ public class ProfileFragment extends Fragment {
         rollEditText.setText(roll);
         rollEditText.setFocusable(false);
         avatarImageView = rootView.findViewById(R.id.imageView_profile_fragment_avatar);
-        switch (avatar){
-            case 0:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_1);
-                break;
-            case 1:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_2);
-                break;
-            case 2:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_3);
-                break;
-            case 3:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_4);
-                break;
-            case 4:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_5);
-                break;
-        }
+        setAvatarImageView(avatar);
         updateButton = rootView.findViewById(R.id.button_profile_fragment_update);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +139,41 @@ public class ProfileFragment extends Fragment {
                     }
                 });
         builder_logout.create().show();
+    }
+
+    public void setAvatarImageView(Integer avatarIndex){
+        switch (avatarIndex){
+            case 0:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_1);
+                break;
+            case 1:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_2);
+                break;
+            case 2:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_3_);
+                break;
+            case 3:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_4);
+                break;
+            case 4:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_5);
+                break;
+            case 5:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_6);
+                break;
+            case 6:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_7);
+                break;
+            case 7:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_8);
+                break;
+            case 8:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_9);
+                break;
+            case 9:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_10);
+                break;
+        }
     }
 
     public String getName() {

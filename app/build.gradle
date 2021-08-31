@@ -11,8 +11,8 @@ android {
         applicationId "com.andriod.egroweed"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 18
-        versionName "alfa 19"
+        versionCode 20
+        versionName "alfa 20"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

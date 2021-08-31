@@ -71,8 +71,11 @@ public class DashboardUserInformationFragment extends Fragment {
         emailTextView.setText(name);
         rollTextView.setText(getRoll());
         balanceTextView.setText(String.valueOf(getBalance()));
-
-        switch (avatar){
+        setAvatarImageView(avatar);
+        return  rootView;
+    }
+    public void setAvatarImageView(Integer avatarIndex){
+        switch (avatarIndex){
             case 0:
                 avatarImageView.setImageResource(R.drawable.ic_avatar_1);
                 break;
@@ -80,7 +83,7 @@ public class DashboardUserInformationFragment extends Fragment {
                 avatarImageView.setImageResource(R.drawable.ic_avatar_2);
                 break;
             case 2:
-                avatarImageView.setImageResource(R.drawable.ic_avatar_3);
+                avatarImageView.setImageResource(R.drawable.ic_avatar_3_);
                 break;
             case 3:
                 avatarImageView.setImageResource(R.drawable.ic_avatar_4);
@@ -88,10 +91,23 @@ public class DashboardUserInformationFragment extends Fragment {
             case 4:
                 avatarImageView.setImageResource(R.drawable.ic_avatar_5);
                 break;
+            case 5:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_6);
+                break;
+            case 6:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_7);
+                break;
+            case 7:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_8);
+                break;
+            case 8:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_9);
+                break;
+            case 9:
+                avatarImageView.setImageResource(R.drawable.ic_avatar_10);
+                break;
         }
-        return  rootView;
     }
-
     public String getName() {
         return name;
     }
