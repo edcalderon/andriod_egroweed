@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +17,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.MainActivityController;
@@ -39,6 +44,7 @@ public class MainActivityRegister extends AppCompatActivity {
     public static final String Balance = "balanceKey";
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +102,10 @@ public class MainActivityRegister extends AppCompatActivity {
         avatarIndex = 7;
         getSupportActionBar().hide();
         mainActivityController = new MainActivityController();
+        Window window = MainActivityRegister.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
     }
     public void userAlreadyTaken(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -172,16 +182,14 @@ public class MainActivityRegister extends AppCompatActivity {
             userAlreadyTaken();
         }
         if(checkActualUser != null && checkUserEmail == null){
-            alertNewUserToRegister();
+            mainActivityController.register(MainActivityRegister.this,
+                    emailEditText.getText().toString(),
+                    passwordEditText.getText().toString(),
+                    avatarIndex,
+                    spinnerRoles.getSelectedItem().toString());
         }
     }
-    public void updateRegisteredUser(){
-        mainActivityController.updateRegisteredUser(this,
-                emailEditText.getText().toString(),
-                passwordEditText.getText().toString(),
-                avatarIndex,
-                spinnerRoles.getSelectedItem().toString());
-    }
+
 
     public void avatarToLeft(){
         setAvatarIndex(avatarIndex - 1);

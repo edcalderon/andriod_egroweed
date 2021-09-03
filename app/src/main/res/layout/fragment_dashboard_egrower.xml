@@ -113,7 +113,7 @@
     <FrameLayout
         android:id="@+id/egrower_menu_user_information_fragment_dashboard"
         android:layout_width="0dp"
-        android:layout_height="95dp"
+        android:layout_height="127dp"
         app:layout_constraintBottom_toTopOf="@+id/dashboard_egrower_main_linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

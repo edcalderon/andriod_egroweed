@@ -4,15 +4,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.andriod.egroweed.R;
 import com.andriod.egroweed.controller.MainActivityControllerLogin;
@@ -34,6 +39,7 @@ public class MainActivityLogin extends AppCompatActivity {
     public static final String Avatar = "avatarKey";
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +75,11 @@ public class MainActivityLogin extends AppCompatActivity {
                 startActivity(newActivity);
             }
         });
+
+        Window window = MainActivityLogin.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
 
         getSupportActionBar().hide();
         mainActivityControllerLogin = new MainActivityControllerLogin();

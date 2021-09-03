@@ -137,6 +137,18 @@ public class DashboardEgrowerMasterGreenHousesCardFragment extends Fragment {
                 Integer quantity = plant.getQuantity();
                 getParentFragmentManager().beginTransaction().add(R.id.egrower_menu_linear_layout_vertical_scroll, DashboardEgrowerMasterSponsoredPlantsFragment.newInstance(owner,quantity), "PLANT_CARD_MASTER_"+plant.getId()).commit();
             }
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage("There is not sponsored plants in this greenhouse?")
+                    .setTitle("Warning!")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
 

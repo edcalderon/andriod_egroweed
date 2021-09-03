@@ -68,7 +68,7 @@ public class WalletFragment extends Fragment {
     }
 
     public void updateUserBalance(){
-        walletFragmentController.addUserBalance(this, (float) 10000, ownerEmail);
+        walletFragmentController.addUserBalance(this, (float) 100000, ownerEmail);
     }
 
     public void updateUserBalanceSucceed(Float newBalance) {
@@ -77,6 +77,6 @@ public class WalletFragment extends Fragment {
         editor.putFloat(Balance,newBalance);
         editor.commit();
         balance.setText(String.valueOf(newBalance));
-        Toasty.success(getContext(), "You have been receive 10.000 BCA Tokens", Toast.LENGTH_SHORT, true).show();
+        Toasty.success(getContext(), "You have been receive 100.000 BCA Tokens", Toast.LENGTH_SHORT, true).show();
     }
 }

@@ -7,6 +7,7 @@
     tools:context=".view.fragments.DashboardEgrowerMasterFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:layout_width="255dp"
         android:layout_height="214dp"
@@ -73,6 +74,18 @@
 
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green Houses"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/egrower_menu_user_information_fragment_dashboard"
+        app:layout_constraintVertical_bias="0.120000005" />
 
     <FrameLayout
         android:id="@+id/egrower_menu_user_information_fragment_dashboard"

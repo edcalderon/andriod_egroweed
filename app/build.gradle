@@ -11,8 +11,8 @@ android {
         applicationId "com.andriod.egroweed"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 21
-        versionName "alfa 21"
+        versionCode 22
+        versionName "alfa 22"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,7 +41,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
@@ -50,7 +50,7 @@ dependencies {
 
 
     implementation 'com.github.GrenderG:Toasty:1.5.0'
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
