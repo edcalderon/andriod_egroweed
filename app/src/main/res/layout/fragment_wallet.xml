@@ -97,10 +97,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_receive_balance"
             android:layout_width="155dp"
-            android:layout_height="85dp"
+            android:layout_height="75dp"
             android:layout_marginTop="8dp"
             android:background="#A8A5A5"
-            app:cardBackgroundColor="#0097A7"
+            app:cardBackgroundColor="#512DA8"
             app:cardCornerRadius="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardView6"
@@ -120,7 +120,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.65"
-                    app:srcCompat="@drawable/ic_receive" />
+                    app:srcCompat="@drawable/ic_receive_dark" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -128,10 +128,11 @@
                     android:layout_height="wrap_content"
                     android:text="Receive"
                     android:textColor="#FFFCFC"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/imageView19"
                     app:layout_constraintEnd_toEndOf="@+id/imageView19"
+                    app:layout_constraintHorizontal_bias="0.508"
                     app:layout_constraintStart_toStartOf="@+id/imageView19" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -139,7 +140,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="155dp"
-            android:layout_height="85dp"
+            android:layout_height="75dp"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
@@ -167,7 +168,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.79"
-                    app:srcCompat="@drawable/ic_send_money" />
+                    app:srcCompat="@drawable/ic_send_money_dark" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -175,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:text="Send"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/imageView20"
                     app:layout_constraintEnd_toEndOf="@+id/imageView20"

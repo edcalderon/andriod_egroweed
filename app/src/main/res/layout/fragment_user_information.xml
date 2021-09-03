@@ -9,13 +9,13 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="105dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="58dp"
+            android:layout_height="62dp"
             android:background="#A8A5A5"
-            app:cardBackgroundColor="#512DA8"
+            app:cardBackgroundColor="@color/purple_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints"
@@ -25,9 +25,8 @@
             android:id="@+id/cardView7"
             android:layout_width="0dp"
             android:layout_height="83dp"
-            android:layout_marginBottom="16dp"
             android:background="#A8A5A5"
-            app:cardBackgroundColor="#512DA8"
+            app:cardBackgroundColor="@color/purple_500"
             app:cardCornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +68,6 @@
                     android:id="@+id/textView_welcome_user_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
                     android:layout_marginEnd="290dp"
                     android:layout_marginRight="290dp"
                     android:text="@string/hello_user_menu_fragment"
@@ -78,7 +76,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/avatar_information_fragment"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/avatar_information_fragment" />
 
                 <TextView
                     android:id="@+id/textView_roll_user_fragment2"
@@ -108,41 +106,43 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="68dp"
                     android:text="BCA Balance"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.23"
-                    app:layout_constraintStart_toEndOf="@+id/imageView_wallet_user_information_fragment"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.195" />
+                    app:layout_constraintStart_toEndOf="@+id/imageView_wallet_user_information_fragment" />
 
                 <ImageView
                     android:id="@+id/imageView_wallet_user_information_fragment"
                     android:layout_width="51dp"
                     android:layout_height="34dp"
-                    android:src="@drawable/ic_wallet_wallet"
+                    android:layout_marginEnd="96dp"
+                    android:layout_marginRight="96dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toEndOf="@+id/imageView22"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.151" />
+                    app:layout_constraintVertical_bias="0.151"
+                    app:srcCompat="@drawable/ic_baseline_wallet_24" />
 
                 <ImageView
                     android:id="@+id/imageView22"
-                    android:layout_width="77dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_logo_dark"
+                    android:layout_width="81dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.045"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView_wallet_user_information_fragment"
+                    app:layout_constraintHorizontal_bias="0.655"
                     app:layout_constraintStart_toEndOf="@+id/textView_welcome_user_fragment"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.7" />
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_logo_dark" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

@@ -44,11 +44,13 @@
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView2"
                 android:layout_width="400dp"
-                android:layout_height="280dp"
+                android:layout_height="275dp"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.428"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
                 <LinearLayout
                     android:id="@+id/egrower_menu_linear_layout_horizontal_scroll"
@@ -79,6 +81,7 @@
             </ScrollView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout6"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +99,7 @@
                     app:layout_constraintHorizontal_bias="0.12"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.44" />
+                    app:layout_constraintVertical_bias="0.43" />
 
                 <Space
                     android:id="@+id/space"
@@ -113,12 +116,13 @@
     <FrameLayout
         android:id="@+id/egrower_menu_user_information_fragment_dashboard"
         android:layout_width="0dp"
-        android:layout_height="127dp"
+        android:layout_height="145dp"
         app:layout_constraintBottom_toTopOf="@+id/dashboard_egrower_main_linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 
