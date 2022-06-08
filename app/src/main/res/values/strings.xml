@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">E-GROWEED</string>
+    <string name="app_name">EGROWEED</string>
     <string name="app_version">ALFA v0.0.22</string>
     <string name="app_login_welcome">WELCOME TO</string>
     <string name="user_name_label">Please enter your name</string>

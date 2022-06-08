@@ -42,6 +42,7 @@ public class MainActivityLogin extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_Egroweed);
         super.onCreate(savedInstanceState);
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         setContentView(R.layout.activity_main_login);
