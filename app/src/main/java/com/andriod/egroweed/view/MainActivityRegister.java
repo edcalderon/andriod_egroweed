@@ -190,7 +190,6 @@ public class MainActivityRegister extends AppCompatActivity {
         }
     }
 
-
     public void avatarToLeft(){
         setAvatarIndex(avatarIndex - 1);
     }
@@ -238,5 +237,9 @@ public class MainActivityRegister extends AppCompatActivity {
                 avatarImageView.setImageResource(R.drawable.ic_avatar_10);
                 break;
         }
+    }
+
+    public void registerFail(User user) {
+        return;
     }
 }
