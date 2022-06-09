@@ -13,4 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/purple_500</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SplashTheme" parent="Theme.Egroweed">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
 }
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 31
@@ -11,7 +12,7 @@ android {
         applicationId "com.andriod.egroweed"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 25
+        versionCode 27
         versionName "alfa 0.2.5"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -57,16 +58,11 @@ dependencies {
     implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
-
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-
-    // Declare the dependency for the Firebase SDK for Google Analytics
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
 
     implementation "androidx.multidex:multidex:2.0.1"
-
 
 }
 repositories {

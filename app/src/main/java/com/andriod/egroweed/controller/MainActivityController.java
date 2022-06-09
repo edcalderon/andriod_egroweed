@@ -1,5 +1,6 @@
 package com.andriod.egroweed.controller;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class MainActivityController {
     //DAO  -> Data Access Object
     private UserRoomDao userRoomDao;
     private FirebaseAuth mAuth;
+    private static final String TAG = MainActivityController.class.getSimpleName();
 
     public User checkActualUser(MainActivityRegister mainActivityRegister){
         this.userRoomDao = LocalStorage.getLocalStorage(mainActivityRegister.getApplicationContext()).userRoomDao();
@@ -45,10 +47,11 @@ public class MainActivityController {
 
     public void firebaseRegister(MainActivityRegister mainActivityRegister, String email, String password, User user){
         mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(mainActivityRegister, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 mainActivityRegister.registerSucceed(user);
+                Log.d(TAG, "onCreate() Restoring previous state");
             }
         });
     }
@@ -67,6 +70,8 @@ public class MainActivityController {
         // mainActivityRegister.registerSucceed(user);
         // Firebase register
         firebaseRegister(mainActivityRegister, email, password, user);
+        Log.d(TAG, "onCreate() Restoring previous state");
+
     }
 
 

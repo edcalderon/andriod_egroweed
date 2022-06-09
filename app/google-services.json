@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "839501609547",
+    "firebase_url": "https://egroweed-app-default-rtdb.firebaseio.com",
+    "project_id": "egroweed-app",
+    "storage_bucket": "egroweed-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839501609547:android:c2ced3bf42f8024223abce",
+        "android_client_info": {
+          "package_name": "com.andriod.egroweed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839501609547-g9pnpfp71n68121mtl23cqbkilb3iete.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuMUqyB-rICQRTmhf98A0Jnx7miIcMXZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839501609547-g9pnpfp71n68121mtl23cqbkilb3iete.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
